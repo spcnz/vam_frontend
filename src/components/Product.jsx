@@ -1,7 +1,7 @@
 const Product = ( { product }) => {
     return (
         <div>
-            <h1>{product.name}</h1>
+            <h2>{product.name}</h2>
             <div>{product.description}</div>
             <img src={product.image} />
             <div>{product.price}€</div>

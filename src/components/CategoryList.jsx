@@ -1,19 +1,19 @@
-import Button from "react-bootstrap/Button";
+import ProductList from "./ProductList";
 
-const CategoryList = props => {
-    let list = props.list? props.list : []
+const CategoryList = ({ categories }) => {
+    console.log('kategorije iz cat list ', categories)
 
-    return(
-        <div style={{whiteSpace: 'nowrap', overflowX: 'auto'}}>
-            {list.map((category, idx) => (
-                <Button variant="light" onClick={() => props.setCategory(category.id)}>
-                    <span key={idx} style={{ margin: '10px'}} o>
-                        {category.name}
-                    </span>
-                </Button>
+    return (
+        <div>
+            {categories.map(cat => (
+                <div key={cat.id} id={cat.id}>
+                    <h1>{cat.name}</h1>
+                    <ProductList data={cat.products} />
+                </div>
             ))}
         </div>
     )
 }
+
 
 export default CategoryList;

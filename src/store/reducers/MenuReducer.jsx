@@ -1,7 +1,7 @@
 import { SET_MENU } from '../actions/ActionTypes';
 
 const initialState = {
-    info: null
+    info: { categories: [] }
   };
 
 const menuReducer = (state = initialState, action) => {
