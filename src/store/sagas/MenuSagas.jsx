@@ -1,13 +1,13 @@
 import { call, put } from 'redux-saga/effects';
 
 import MenuService from '../../services/MenuService';
-import { setMenu } from '../actions/MenuActions';
+import { menuRequestFailed, setMenu } from '../actions/MenuActions';
 
 export function* getMenu({ payload }) {
   try {
     const data = yield call(MenuService.getOne, payload);
     yield put(setMenu(data));
   } catch (error) {
-      //ovo izmeniti!!
+    yield put(menuRequestFailed(true))
   }
 }

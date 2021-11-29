@@ -8,11 +8,13 @@ import { Header, IconInside, Image, SearchBar, SearchInput } from '../styles/Men
 import CategoryNavbarList from '../components/CategoryNavbarList';
 import useDebounce from '../hooks/useDebounce';
 import CategoryList from '../components/CategoryList';
-
+import ErrorAlert from '../components/ErrorAlert';
 
 const Menu = () => {
     const dispatch = useDispatch();
     const menu = useSelector(state => state.menu.info ? state.menu.info : {});
+    const error = useSelector(state => state.menu.error);
+
     const [searchTerm, setSearchTerm] = useState('');
     const [data, setData] = useState(menu.categories);
 
@@ -52,6 +54,10 @@ const Menu = () => {
                 <CategoryNavbarList list={menu.categories} />
                 <Dropdown.Divider style={{ margin: '10px'}} />
                 <CategoryList categories={debouncedSearchTerm? data: menu.categories} />
+                {error && <ErrorAlert 
+                    errorTitle={"Sorry something went wrong!"} 
+                    errorMsg={"Can't load data right now. Please try again later."}
+                />}
             </div>
         </div>
     )
