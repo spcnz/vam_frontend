@@ -47,8 +47,8 @@ const Menu = () => {
                 <SearchBar>
                     <SearchInput type="text" className="form-control" placeholder="" onChange={e => setSearchTerm(e.target.value)}/>
                     <IconInside className="glyphicon glyphicon-search" />
-                 </SearchBar>
-                 <h1>{menu.objectName}</h1>
+                </SearchBar>
+                <h1>{menu.objectName}</h1>
             </Header>
             <div>
                 <CategoryNavbarList list={menu.categories} />
