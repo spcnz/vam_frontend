@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
-import { getMenu } from '../store/actions/MenuActions';
-import { Header, IconInside, Image, SearchBar, SearchInput } from '../styles/MenuStyles';
-import CategoryNavbarList from '../components/CategoryNavbarList';
-import useDebounce from '../hooks/useDebounce';
-import CategoryList from '../components/CategoryList';
-import ErrorAlert from '../components/ErrorAlert';
+import { getMenu } from '../../store/actions/MenuActions';
+import { Header, IconInside, Image, SearchBar, SearchInput } from '../../styles/MenuStyles';
+import CategoryNavbarList from '../../components/CategoryNavbarList';
+import useDebounce from '../../hooks/useDebounce';
+import CategoryList from '../../components/CategoryList';
+import ErrorAlert from '../../components/ErrorAlert';
 
 const Menu = () => {
     const dispatch = useDispatch();

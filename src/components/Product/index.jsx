@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import ProductDetail from "../containers/ProductDetail";
+import ProductDetail from "../../containers/ProductDetail";
 
 const Product = ( { product }) => {
     const [show, setShow] = useState(false);

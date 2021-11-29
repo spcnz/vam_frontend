@@ -1,7 +1,7 @@
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import Product from "./Product";
+import Product from "../Product";
 
 const ProductList = ({ data }) => {
 

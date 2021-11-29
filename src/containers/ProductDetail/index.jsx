@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
-import { DetailsContainer, Image, Modal } from "../styles/MenuStyles";
+import { DetailsContainer, Image, Modal } from "../../styles/MenuStyles";
 
 
 function ProductDetail({ active, setActive, product}) {

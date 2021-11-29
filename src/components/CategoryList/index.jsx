@@ -1,4 +1,4 @@
-import ProductList from "./ProductList";
+import ProductList from "../ProductList";
 
 const CategoryList = ({ categories }) => {
     console.log('==== RENDER CATEGORY LIST COMPONENT =======')
