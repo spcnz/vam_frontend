@@ -38,7 +38,7 @@ const Menu = () => {
             } else {
                 setData(menu.categories)
             }
-        },[debouncedSearchTerm]);
+        },[debouncedSearchTerm, menu.categories]);
 
     return(
         <div>

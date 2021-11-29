@@ -10,7 +10,7 @@ const Product = ( { product }) => {
         <div onClick={() => setShow(true)}>
             <h2>{product.name}</h2>
             <div>{product.description}</div>
-            <img src={product.image} />
+            <img src={product.image} alt="Food"/>
             <div>{product.price}€</div>
         </div>
         <ProductDetail active={show} setActive={setShow} product={product}/>
