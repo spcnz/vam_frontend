@@ -29,7 +29,7 @@ const Menu = () => {
             let result = [];
             if (debouncedSearchTerm) {
                 result = menu.categories.reduce((acc, category) => {
-                    const products = category.products.filter(el => el.name.startsWith(debouncedSearchTerm))
+                    const products = category.products.filter(el => el.name.toLowerCase().startsWith(debouncedSearchTerm.toLowerCase()))
                     if (products.length > 0)
                         acc.push({...category, products: products})
                     return acc;
