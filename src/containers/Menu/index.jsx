@@ -9,6 +9,7 @@ import CategoryNavbarList from '../../components/CategoryNavbarList';
 import useDebounce from '../../hooks/useDebounce';
 import CategoryList from '../../components/CategoryList';
 import ErrorAlert from '../../components/ErrorAlert';
+import OrderAlert from '../OrderAlert';
 
 const Menu = () => {
     const dispatch = useDispatch();
@@ -58,6 +59,7 @@ const Menu = () => {
                     errorTitle={"Sorry something went wrong!"} 
                     errorMsg={"Can't load data right now. Please try again later."}
                 />}
+                <OrderAlert />
             </div>
         </div>
     )

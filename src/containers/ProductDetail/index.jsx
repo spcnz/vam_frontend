@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
-import { DetailsContainer, Image, Modal } from "../../styles/MenuStyles";
 
+import { DetailsContainer, Image, Modal } from "../../styles/MenuStyles";
+import { addToOrder } from '../../store/actions/OrderActions';
 
 function ProductDetail({ active, setActive, product}) {
-  const [quantity, setQuantity] = useState(1) 
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
 
   const decrease = () => {
     setQuantity(prevState => prevState > 1 ? prevState - 1: 1)
@@ -13,6 +17,15 @@ function ProductDetail({ active, setActive, product}) {
   const increase = () => {
     setQuantity(prevState => prevState + 1)
   }
+
+  const onAdd = () => {
+    dispatch(addToOrder({ ...product, quantity}))
+    setActive(false)
+  }
+
+  useEffect(() => {
+    setQuantity(1);
+  }, [active])
 
   return (
     <Modal active={active}>
@@ -31,7 +44,7 @@ function ProductDetail({ active, setActive, product}) {
             <Button onClick={increase}>+</Button>
           </Col>
           <Col>
-            <Button>
+            <Button onClick={onAdd}>
               Add to order
             </Button>
           </Col>
