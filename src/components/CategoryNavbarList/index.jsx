@@ -1,4 +1,4 @@
-import {Link} from 'react-scroll'
+import { Link } from 'react-scroll'
 
 const CategoryNavbarList = props => {
     let list = props.list? props.list : []
