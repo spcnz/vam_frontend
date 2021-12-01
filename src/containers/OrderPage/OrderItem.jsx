@@ -11,12 +11,11 @@ const OrderItem = ({ item }) => {
     const dispatch = useDispatch();
 
     const changeQuantity = type => {
-        console.log(item.id, 'iz orderitem')
         if (type === DECREASE) {
             if (item.quantity >  1)
                 dispatch(decreaseQuantity(item.id))
         }
-        else if (type == INCREASE) {
+        else if (type === INCREASE) {
             dispatch(increaseQuantity(item.id))
         }
     }

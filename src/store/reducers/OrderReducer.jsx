@@ -21,8 +21,8 @@ const orderReducer = (state = initialState, action) => {
       return newState;
     case INCREASE_QUANTITY:
       productsChanged = state.products.reduce((result, product) => {
-        if (product.id == action.payload)
-          product = {... product, quantity : product.quantity + 1};
+        if (product.id === action.payload)
+          product = {...product, quantity : product.quantity + 1};
         result.push(product);
         return result;
       }, [])
@@ -32,8 +32,8 @@ const orderReducer = (state = initialState, action) => {
       return newState;
     case DECREASE_QUANTITY:
         productsChanged = state.products.reduce((result, product) => {
-          if (product.id == action.payload)
-            product = {... product, quantity : product.quantity - 1};
+          if (product.id === action.payload)
+            product = {...product, quantity : product.quantity - 1};
           result.push(product);
           return result;
         }, [])
@@ -42,7 +42,7 @@ const orderReducer = (state = initialState, action) => {
   
         return newState;
     case REMOVE_PRODUCT:
-        productsChanged = state.products.filter(el => el.id != action.payload);
+        productsChanged = state.products.filter(el => el.id !== action.payload);
         newState = { products: productsChanged, total: calcTotal(productsChanged)}
         saveOrder(newState)
 
@@ -61,6 +61,9 @@ const saveOrder = order => {
   localStorage.setItem('order', JSON.stringify(order));
 }
 
+const discardOrder = () => {
+  localStorage.removeItem('order');
+}
 
 
 export default orderReducer;

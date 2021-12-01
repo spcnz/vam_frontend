@@ -10,7 +10,7 @@ import { addToOrder, increaseQuantity, decreaseQuantity } from '../../store/acti
 function ProductDetail({ active, setActive, product}) {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
-  const ordered = useSelector(state => state.order?.products.find(el => el.id == product.id))
+  const ordered = useSelector(state => state.order?.products.find(el => el.id === product.id))
 
   const decrease = () => {
     if (!ordered)
@@ -56,7 +56,7 @@ function ProductDetail({ active, setActive, product}) {
               onClick={onAdd} 
               disabled={ordered}
             >
-              {ordered? "Already in the order!": "Add to order"}
+              {ordered? "Update your order": "Add to order"}
             </Button>
           </Col>
         </Row>
