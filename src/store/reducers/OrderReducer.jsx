@@ -1,8 +1,10 @@
-import { ADD_TO_ORDER, DECREASE_QUANTITY, INCREASE_QUANTITY, REMOVE_PRODUCT } from '../actions/ActionTypes';
+import { ADD_TO_ORDER, DECREASE_QUANTITY, DISCARD_ORDER, INCREASE_QUANTITY, ORDER_REQUEST_FAILED, REMOVE_PRODUCT } from '../actions/ActionTypes';
 
 const initialState = {
     products : JSON.parse(localStorage.getItem('order'))?.products || [],
-    total:  JSON.parse(localStorage.getItem('order'))?.products.reduce((res,item) => res + item.price * item.quantity ,0)  || 0
+    total:  JSON.parse(localStorage.getItem('order'))?.total || 0,
+    error: null,
+    success: true
   };
 
 const orderReducer = (state = initialState, action) => {
@@ -47,7 +49,11 @@ const orderReducer = (state = initialState, action) => {
         saveOrder(newState)
 
         return newState;
-
+    case DISCARD_ORDER:
+      discardOrder()
+      return {...initialState, success: true };
+    case ORDER_REQUEST_FAILED:
+        return {...state, error: action.payload }
     default:
       return state;
   }
