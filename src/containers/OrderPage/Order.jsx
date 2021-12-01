@@ -5,7 +5,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import OrderItem from "./OrderItem";
 
 const Order = () => {
-    const order = useSelector(state => state.order)
+    const products = useSelector(state => state.order?.products || [])
+    const total = useSelector(state => state.order?.total || null)
 
     const formatDate = date => {
         const year = date.getYear();
@@ -22,7 +23,6 @@ const Order = () => {
         return `${hours}:${minutes}`
     }
 
-    console.log(order);
     return(
         <>
         <Dropdown.Divider />
@@ -36,11 +36,11 @@ const Order = () => {
         </div>
         <Dropdown.Divider />
         <div>
-            {order.products.map((el, idx) => (
+            {products.map((el, idx) => (
                <OrderItem key={idx} item={el} />
             ))}
             <div>
-                Total <span>{order.total}</span>
+                Total <span>{total}</span>
             </div>
         </div>
         </>
