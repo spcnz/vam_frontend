@@ -1,4 +1,4 @@
-import { ADD_TO_ORDER, DECREASE_QUANTITY, INCREASE_QUANTITY } from './ActionTypes';
+import { ADD_TO_ORDER, DECREASE_QUANTITY, INCREASE_QUANTITY, REMOVE_PRODUCT } from './ActionTypes';
 
 export const addToOrder = payload => {
   return {
@@ -17,6 +17,14 @@ export const increaseQuantity = payload => {
 export const decreaseQuantity = payload => {
   return {
     type: DECREASE_QUANTITY,
+    payload
+  };
+};
+
+export const removeProduct = payload => {
+  console.log('here action')
+  return {
+    type: REMOVE_PRODUCT,
     payload
   };
 };

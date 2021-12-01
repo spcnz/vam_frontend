@@ -1,4 +1,4 @@
-import { ADD_TO_ORDER, DECREASE_QUANTITY, INCREASE_QUANTITY } from '../actions/ActionTypes';
+import { ADD_TO_ORDER, DECREASE_QUANTITY, INCREASE_QUANTITY, REMOVE_PRODUCT } from '../actions/ActionTypes';
 
 const initialState = {
     products : JSON.parse(localStorage.getItem('order'))?.products || [],
@@ -41,6 +41,13 @@ const orderReducer = (state = initialState, action) => {
         saveOrder(newState)
   
         return newState;
+    case REMOVE_PRODUCT:
+        productsChanged = state.products.filter(el => el.id != action.payload);
+        newState = { products: productsChanged, total: calcTotal(productsChanged)}
+        saveOrder(newState)
+
+        return newState;
+
     default:
       return state;
   }

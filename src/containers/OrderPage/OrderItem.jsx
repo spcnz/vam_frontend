@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import Button from 'react-bootstrap/Button'
 
-import { increaseQuantity, decreaseQuantity } from '../../store/actions/OrderActions';
+import { increaseQuantity, decreaseQuantity, removeProduct } from '../../store/actions/OrderActions';
 
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
@@ -21,10 +21,13 @@ const OrderItem = ({ item }) => {
         }
     }
 
-
+    const deleteProduct = () => {
+        dispatch(removeProduct(item.id))
+    }
 
     return(
         <div>
+            <Button onClick={(deleteProduct)}>Remove</Button>
             <span>{item.name}</span>
             <span>{item.price}</span>
             <Button onClick={() => changeQuantity(DECREASE)}>-</Button>
