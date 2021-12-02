@@ -1,0 +1,60 @@
+.header {
+    text-align: center;
+    font-size: 24px;
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+
+.headerImage {
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 0px 40px 25px rgb(228, 228, 228);
+}
+
+.objectName {
+    font-weight: bold;
+    font-size: 30px;
+    color: #0e1237;
+}
+
+.menuContent {
+    padding: 20px 20px 20px 20px!important;
+}
+
+.searchBar {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.form-control.search {
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-radius: 70px;
+    margin: 10px auto 10px auto;
+    padding-left: 50px;
+    font-size: 16px;
+    color: rgb(196, 195, 195);
+    box-shadow: 0 6px 3px -3px rgb(196, 195, 195);
+}
+
+.form-control.search:focus {
+    box-shadow: 0 0 0 0.2rem #d1b7ff;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 35px;
+    top: 8px;
+    color: rgb(173, 173, 173);
+}
+
+.form-control.search-query {
+    width: 80%;
+    height: 40px;
+    border-radius: 70px;
+    margin: 10px auto 10px auto;
+    border: none;
+    box-shadow: 0 6px 3px -3px rgb(196, 195, 195);
+}

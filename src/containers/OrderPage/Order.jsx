@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
-
 import Dropdown from 'react-bootstrap/Dropdown';
-
 import OrderItem from "./OrderItem";
 
 const Order = () => {
@@ -45,8 +43,6 @@ const Order = () => {
         </div>
         </>
     )
-
 }
-
 
 export default Order;

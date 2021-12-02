@@ -1,0 +1,42 @@
+.productContainer {
+    margin-top: 18px!important;
+}
+
+.productName {
+    color: black;
+}
+
+.productInformation {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.productDescription {
+    font-size: 14px;
+    padding-right: 10px;
+    float: left;
+    color: gray;
+}
+
+.productDescription .price {
+    width: auto;
+    font-size: 16px;
+    color: #6059fd;
+    margin-top: 3px;
+}
+
+.productImageContainer {
+    float: right;
+}
+
+.productImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgb(245, 245, 245);
+}
+
+.divider {
+    margin-top: 10px;
+    background-color: rgb(143, 143, 143);
+}

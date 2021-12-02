@@ -1,0 +1,28 @@
+.orderToast {
+    background-color: #07223e!important;
+    color: white!important;
+    text-align: right;
+    border-radius: 5px!important;
+    margin-bottom: 10px;
+}
+
+.orderConfirmation {
+    color: white!important;
+    float: left;
+}
+
+.orderTotal {
+    margin-top: 5px!important;
+}
+
+.orderToastBody {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.orderToastContainer {
+    position:sticky;
+    bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

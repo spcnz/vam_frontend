@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Dropdown from 'react-bootstrap/Dropdown';
+import { Container, Row, Col} from 'react-bootstrap';
 
 import { getMenu } from '../../store/actions/MenuActions';
 import { Header, IconInside, Image, SearchBar, SearchInput } from '../../styles/MenuStyles';
@@ -10,6 +11,7 @@ import useDebounce from '../../hooks/useDebounce';
 import CategoryList from '../../components/CategoryList';
 import ErrorAlert from '../../components/ErrorAlert';
 import OrderAlert from '../OrderAlert';
+import "../../../src/assets/css/Menu.css";
 
 const Menu = () => {
     const dispatch = useDispatch();
@@ -43,28 +45,32 @@ const Menu = () => {
 
     return(
         <div>
-            <Header>
-                <Image src={menu.image} />
-                <SearchBar>
-                    <SearchInput type="text" className="form-control" placeholder="" onChange={e => setSearchTerm(e.target.value)}/>
-                    <IconInside className="glyphicon glyphicon-search" />
-                </SearchBar>
-                <h1>{menu.objectName}</h1>
-            </Header>
-            <div>
+            <Container>
+                <Row>
+                    <Header className="header">
+                        <Image src={menu.image} className="headerImage" />
+                        <div className="col searchBar">
+                            <input type="text" className="form-control search" placeholder="Traži" onChange={e => setSearchTerm(e.target.value)}/>
+                            <i className="col-2 glyphicon glyphicon-search searchIcon"/>
+                        </div>
+                        <h1 className="objectName">{menu.objectName}</h1>
+                    </Header>
+                </Row>
+            </Container>
+            <Container className="menuContent">
                 <CategoryNavbarList list={menu.categories} />
-                <Dropdown.Divider style={{ margin: '10px'}} />
-                <CategoryList categories={debouncedSearchTerm? data: menu.categories} />
-                {error && <ErrorAlert 
-                    errorTitle={"Sorry something went wrong!"} 
-                    errorMsg={"Can't load data right now. Please try again later."}
-                />}
-                <OrderAlert />
-            </div>
+                <Row>
+                    <CategoryList categories={debouncedSearchTerm? data: menu.categories} />
+                    {error && <ErrorAlert 
+                        errorTitle={"Sorry something went wrong!"} 
+                        errorMsg={"Can't load data right now. Please try again later."}
+                    />}
+                </Row>
+            </Container>
+            <OrderAlert className="orderAlert"/>
         </div>
     )
 }
-
 
 export default Menu;
 

@@ -1,7 +1,5 @@
 import { useDispatch } from "react-redux";
-
 import Button from 'react-bootstrap/Button'
-
 import { increaseQuantity, decreaseQuantity, removeProduct } from '../../store/actions/OrderActions';
 
 const INCREASE = 'INCREASE';

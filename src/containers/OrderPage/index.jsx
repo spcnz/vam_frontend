@@ -1,4 +1,3 @@
-
 import Button from "@restart/ui/esm/Button";
 import Nav from 'react-bootstrap/Nav'
 
@@ -7,8 +6,6 @@ import { MENU } from '../../routes';
 import Order from "./Order";
 
 const OrderPage = () => {
-  
-
     return(
             <Root>
                 <StyledContainer>
@@ -20,8 +17,6 @@ const OrderPage = () => {
                 </StyledContainer>
             </Root>
     )
-
 }
-
 
 export default OrderPage;

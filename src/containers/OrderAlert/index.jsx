@@ -1,11 +1,9 @@
 import { useSelector } from 'react-redux';
-
+import { Container, Row, Col, Nav } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav'
+import "../../../src/assets/css/OrderAlert.css";
 
 import { ORDER } from '../../routes';
 
@@ -13,20 +11,24 @@ const OrderAlert = () => {
   const total = useSelector(state => state.order.total)
 
   return (
-    <ToastContainer className="p-4" position={"bottom-center"}>
-      <Toast animation={false}>
-        <Toast.Header closeButton={false}>
-          <Container>
-            <Row>
-              <Col>
-                <Nav.Link href={ORDER}>Check your order</Nav.Link>
-              </Col>
-              <Col>{total}</Col>
-            </Row>
-          </Container>
-        </Toast.Header>
-      </Toast>
-    </ToastContainer>
+    <div className="orderToastContainer">
+      <ToastContainer position={"bottom-center"}>
+          <Toast animation={false} className="orderToast">
+            <Toast.Body className="orderToastBody">
+              <Container>
+                  <Row>
+                    <Col>
+                      <Nav.Link href={ORDER} className="orderConfirmation">Naruči</Nav.Link>
+                    </Col>
+                    <Col className="orderTotal">
+                      <span>{total}€</span>
+                    </Col>
+                  </Row>
+              </Container>
+            </Toast.Body>
+          </Toast>
+      </ToastContainer>
+    </div>
   )
 }
 
