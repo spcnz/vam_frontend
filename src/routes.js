@@ -1,3 +1,3 @@
 export const HOME = '/';
-export const MENU = '/:facilityId/menu/';
+export const MENU = '/menu/:facilityId';
 export const ORDER = '/order';

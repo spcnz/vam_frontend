@@ -1,8 +1,9 @@
 import { GET_MENU, MENU_REQUEST_FAILED, SET_MENU } from './ActionTypes';
 
-export const getMenu = () => {
+export const getMenu = payload => {
   return {
-    type: GET_MENU
+    type: GET_MENU,
+    payload
   };
 };
 

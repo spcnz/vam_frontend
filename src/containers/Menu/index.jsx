@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -15,12 +16,13 @@ const Menu = () => {
     const dispatch = useDispatch();
     const menu = useSelector(state => state.menu.info || {});
     const error = useSelector(state => state.menu.error);
+    const { facilityId } = useParams();
 
     const [searchTerm, setSearchTerm] = useState('');
     const [data, setData] = useState(menu.categories);
 
     useEffect(() => {
-        dispatch(getMenu())
+        dispatch(getMenu(facilityId))
     },[dispatch])
 
     const debouncedSearchTerm = useDebounce(searchTerm, 500);

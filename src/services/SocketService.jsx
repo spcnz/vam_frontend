@@ -1,22 +1,15 @@
 import config from '../config';
 
 class SocketService {
-    static instance = null;
 
-    constructor() {
+    constructor(options = {}) {
         this.socketRef = null;
-    }
-  
-    static getInstance() {
-      if (!SocketService.instance) {
-        SocketService.instance = new SocketService();
-      }
-      return SocketService.instance;
+        this.options = options;
     }
   
     connect() {
-        const path = config.API_BASE_URL;
-        this.socketRef = new WebSocket(path);
+        const { baseURL } = this.options;
+        this.socketRef = new WebSocket(baseURL);
         this.socketRef.onopen = () => {
             console.log('WebSocket open');
         };
@@ -30,29 +23,38 @@ class SocketService {
     }
 
     state() {
-        return this.socketRef.readyState;
+        return this.socketRef?.readyState;
     }
 
-    waitForSocketConnection(callback){
+    waitForSocketConnection() {
         const socket = this.socketRef;
-        const recursion = this.waitForSocketConnection;
-        setTimeout(
-            function () {
-            if (socket.readyState === 1) {
-                console.log("Connection is made")
-                if(callback != null){
-                callback();
-                }
-                return;
-
+        return new Promise((resolve) => {
+            if (socket.readyState !== socket.OPEN) {
+              socket.onopen(() => {
+                resolve();
+              });
             } else {
-                console.log("wait for connection...")
-                recursion(callback);
+              resolve();
             }
-            }, 1); 
-    }
-}    
+          });
+      }
+        
 
-const socketService = SocketService.getInstance();
+    sendData = async (data) => {
+        await this.waitForSocketConnection()
+        try {
+            this.socketRef.send(JSON.stringify({ ...data }));
+        }
+        catch(err) {
+            console.log(err.message);
+        }  
+  }
+}
+
+const options = {
+    baseURL: `${config.WS_BASE_URL}/ws/chat/`
+};   
+
+const socketService = new SocketService(options);
 
 export default socketService;
