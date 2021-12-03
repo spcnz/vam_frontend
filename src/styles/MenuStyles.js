@@ -10,7 +10,7 @@ export const Image = styled.img`
 `;
 
 export const Modal = styled.div`
-    display: ${props => props.active ? 'block': 'none'}; 
+    display: ${props => props.active ? 'block': 'none'};
     position: fixed; 
     z-index: 1;
     padding-top: 10vh; 
@@ -29,14 +29,12 @@ const slideInAnimation = keyframes`
     }
 `
 export const DetailsContainer = styled.div`
-    border-radius: 15px;
-    position: relative;
-    background-color: white;
-    padding: 0;
-    border: 1px solid #888;
     width: 100%;
-    height: 95vh;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.17),0 6px 20px 0 rgba(0,0,0,0.19);
+    bottom: 0px;
+    position: absolute;
+    background-color: white;
+    border-radius: 35px 35px 0 0;
     animation-name: ${slideInAnimation};
-    animation-duration: 0.5s
+    animation-duration: 0.5s;
+    overflow: hidden;
 `

@@ -15,7 +15,7 @@ import "../../../src/assets/css/Menu.css";
 
 const Menu = () => {
     const dispatch = useDispatch();
-    const menu = useSelector(state => state.menu.info ? state.menu.info : {});
+    const menu = useSelector(state => state.menu.info || {});
     const error = useSelector(state => state.menu.error);
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -73,4 +73,3 @@ const Menu = () => {
 }
 
 export default Menu;
-

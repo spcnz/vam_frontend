@@ -12,7 +12,7 @@ export const Root = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 90%;
     width: 100%;
 `
 export const StyledContainer = styled.div`

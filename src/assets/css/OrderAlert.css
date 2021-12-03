@@ -4,6 +4,7 @@
     text-align: right;
     border-radius: 5px!important;
     margin-bottom: 10px;
+    box-shadow: 0 0 7px rgb(194, 194, 194)!important;
 }
 
 .orderConfirmation {
