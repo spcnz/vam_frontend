@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button'
 import { increaseQuantity, decreaseQuantity, removeProduct } from '../../store/actions/OrderActions';
 import "../../../src/assets/css/Order.css";
+import { round } from '../../utils';
 
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
@@ -27,7 +28,7 @@ const OrderItem = ({ item }) => {
         <div>
             <Button onClick={(deleteProduct)}>Remove</Button>
             <span>{item.name}</span>
-            <span>{item.price}</span>
+            <span>{round(item.price)}</span>
             <Button onClick={() => changeQuantity(DECREASE)}>-</Button>
                 <span>{item.quantity}</span>
             <Button onClick={() => changeQuantity(INCREASE)}>+</Button>
