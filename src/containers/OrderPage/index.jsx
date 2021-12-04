@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import Button from "@restart/ui/esm/Button";
 import Nav from 'react-bootstrap/Nav'
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -24,7 +22,6 @@ const OrderPage = () => {
     const error = useSelector(state => state.order.error);
 
     const onConfirmClick = () => {
-        console.log('hehe')
         dispatch(confirmOrder(order))
         setShowModal(false);
         setLoading(true);
