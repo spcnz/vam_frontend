@@ -1,4 +1,4 @@
-import { ADD_TO_ORDER, CONFIRM_ORDER, DECREASE_QUANTITY, DISCARD_ORDER, INCREASE_QUANTITY, ORDER_REQUEST_FAILED, REMOVE_PRODUCT } from './ActionTypes';
+import { ADD_TO_ORDER, CONFIRM_ORDER, DECREASE_QUANTITY, DISCARD_ORDER, INCREASE_QUANTITY, ORDER_REQUEST_FAILED, REMOVE_PRODUCT, UPDATE_QUANTITY } from './ActionTypes';
 
 export const addToOrder = payload => {
   return {
@@ -45,6 +45,13 @@ export const discardOrder = payload => {
 export const orderRequestFailed = payload => {
   return {
     type: ORDER_REQUEST_FAILED,
+    payload
+  };
+};
+
+export const updateQuantity = payload => {
+  return {
+    type: UPDATE_QUANTITY,
     payload
   };
 };

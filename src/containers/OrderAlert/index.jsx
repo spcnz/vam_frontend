@@ -1,14 +1,17 @@
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+
 import { Container, Row, Col, Nav } from 'react-bootstrap';
-import { Alert } from 'react-bootstrap';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import "../../../src/assets/css/OrderAlert.css";
+import { round } from '../../utils';
 
 import { ORDER } from '../../routes';
 
 const OrderAlert = () => {
   const total = useSelector(state => state.order.total)
+  const navigate = useNavigate();
 
   return (
     <div className="orderToastContainer">
@@ -16,12 +19,12 @@ const OrderAlert = () => {
           <Toast animation={false} className="orderToast">
             <Toast.Body className="orderToastBody">
               <Container>
-                  <Row>
+                  <Row onClick={() => navigate(ORDER)}>
                     <Col>
-                      <Nav.Link href={ORDER} className="orderConfirmation">Naruči</Nav.Link>
+                      <span className="orderConfirmation">Naruči</span>
                     </Col>
                     <Col className="orderTotal">
-                      <span>{total}€</span>
+                      <span>{round(total)}€</span>
                     </Col>
                   </Row>
               </Container>
