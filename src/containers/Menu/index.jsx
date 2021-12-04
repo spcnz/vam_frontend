@@ -56,13 +56,14 @@ const Menu = () => {
                         >
                             <input type="text" className="form-control search" placeholder="Traži" onChange={e => setSearchTerm(e.target.value)}/>
                             <i className="col-2 glyphicon glyphicon-search searchIcon"/>
+                            <span onClick={() => setSearchTerm("")}>x</span>
                         </div>
                         <h1 className="objectName">{menu.objectName}</h1>
                     </Header>
                 </Row>
             </Container>
             <Container className="menuContent">
-                <CategoryNavbarList list={menu.categories} />
+                <CategoryNavbarList list={debouncedSearchTerm? data: menu.categories} />
                 <Row>
                     <CategoryList categories={debouncedSearchTerm? data: menu.categories} />
                     {error && <ErrorAlert 
