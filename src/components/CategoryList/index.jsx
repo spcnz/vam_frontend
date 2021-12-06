@@ -1,4 +1,5 @@
 import ProductList from "../ProductList";
+import "../../../src/assets/css/CategoryList.css";
 
 const CategoryList = ({ categories }) => {
     console.log('==== RENDER CATEGORY LIST COMPONENT =======')
@@ -7,8 +8,8 @@ const CategoryList = ({ categories }) => {
         <div>
             {categories.map(cat => (
                 <div key={cat.id} id={cat.id}>
-                    <h1>{cat.name}</h1>
-                        <ProductList data={cat.products}/>
+                    <h1 className="categoryName">{cat.name}</h1>
+                    <ProductList data={cat.products}/>
                 </div>
             ))}
         </div>

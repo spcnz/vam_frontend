@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-
-import Dropdown from 'react-bootstrap/Dropdown';
-
+import { Container } from 'react-bootstrap';
 import OrderItem from "./OrderItem";
+import "../../../src/assets/css/Order.css";
+import { round } from '../../utils';
 
 const Order = () => {
     const products = useSelector(state => state.order?.products || [])
@@ -24,29 +24,19 @@ const Order = () => {
     }
 
     return(
-        <>
-        <Dropdown.Divider />
-        <div>
-            <span>
-                {formatDate(new Date())}
-            </span>
-            <span>
-                {formatTime(new Date())}
-            </span>
-        </div>
-        <Dropdown.Divider />
-        <div>
-            {products.map((el, idx) => (
-               <OrderItem key={idx} item={el} />
-            ))}
+        <Container>
             <div>
-                Total <span>{total}</span>
+                <span>{formatDate(new Date())}</span>
+                <span>{formatTime(new Date())}</span>
             </div>
-        </div>
-        </>
+            <div>
+                {products.map((el, idx) => (
+                <OrderItem key={idx} item={el} />
+                ))}
+                <div>Total <span>{round(total)}</span></div>
+            </div>
+        </Container>
     )
-
 }
-
 
 export default Order;

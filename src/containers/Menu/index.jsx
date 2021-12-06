@@ -2,22 +2,25 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Container, Row} from 'react-bootstrap';
 
 import { getMenu } from '../../store/actions/MenuActions';
-import { Header, IconInside, Image, SearchBar, SearchInput } from '../../styles/MenuStyles';
+import { Header, Image } from '../../styles/MenuStyles';
 import CategoryNavbarList from '../../components/CategoryNavbarList';
 import useDebounce from '../../hooks/useDebounce';
 import CategoryList from '../../components/CategoryList';
 import ErrorAlert from '../../components/ErrorAlert';
 import OrderAlert from '../OrderAlert';
+import "../../../src/assets/css/Menu.css";
 
 const Menu = () => {
     const dispatch = useDispatch();
     const menu = useSelector(state => state.menu.info || {});
+    const total = useSelector(state => state.order?.total);
     const error = useSelector(state => state.menu.error);
     const { facilityId } = useParams();
 
+    const [searchActive, setSearchActive] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [data, setData] = useState(menu.categories);
 
@@ -45,28 +48,36 @@ const Menu = () => {
 
     return(
         <div>
-            <Header>
-                <Image src={menu.image} />
-                <SearchBar>
-                    <SearchInput type="text" className="form-control" placeholder="" onChange={e => setSearchTerm(e.target.value)}/>
-                    <IconInside className="glyphicon glyphicon-search" />
-                </SearchBar>
-                <h1>{menu.objectName}</h1>
-            </Header>
-            <div>
-                <CategoryNavbarList list={menu.categories} />
-                <Dropdown.Divider style={{ margin: '10px'}} />
-                <CategoryList categories={debouncedSearchTerm? data: menu.categories} />
-                {error && <ErrorAlert 
-                    errorTitle={"Sorry something went wrong!"} 
-                    errorMsg={"Can't load data right now. Please try again later."}
-                />}
-                <OrderAlert />
-            </div>
+            <Container>
+                <Row>
+                    <Header className="header">
+                        <Image src={menu.image} className="headerImage" />
+                        <div 
+                            className="col searchBar" 
+                            onFocus={() => setSearchActive(true)} 
+                            onBlur={() => setSearchActive(false)}
+                        >
+                            <input type="text" className="form-control search" placeholder="Traži" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
+                            <i className="col-2 glyphicon glyphicon-search searchIcon"/>
+                            <span onClick={() => setSearchTerm("")}>x</span>
+                        </div>
+                        <h1 className="objectName">{menu.objectName}</h1>
+                    </Header>
+                </Row>
+            </Container>
+            <Container className="menuContent">
+                <CategoryNavbarList list={debouncedSearchTerm? data: menu.categories} />
+                <Row>
+                    <CategoryList categories={debouncedSearchTerm? data: menu.categories} />
+                    {error && <ErrorAlert 
+                        errorTitle={"Sorry something went wrong!"} 
+                        errorMsg={"Can't load data right now. Please try again later."}
+                    />}
+                </Row>
+            </Container>
+            {total && !searchActive && <OrderAlert className="orderAlert"/>}
         </div>
     )
 }
 
-
 export default Menu;
-

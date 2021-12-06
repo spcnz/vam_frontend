@@ -1,22 +1,16 @@
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-
+import { Row } from "react-bootstrap";
 import Product from "../Product";
 
 const ProductList = ({ data }) => {
-
     return(
-        <Container>
+        <div>
             {data.map((el, idx) => (
                 <Row key={idx}>
                     <Product product={el} />
                 </Row>
             ))}
-        </Container>
+        </div>
     )
-
-
 }
-
 
 export default ProductList;

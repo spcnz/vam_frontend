@@ -1,0 +1,19 @@
+.categoryNavbarName {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px 10px 5px 10px;
+    margin-right: 15px;
+    background-color: #ededfa;
+    color: #985ffd;
+    border-radius: 15px;
+}
+
+.overflowNavbar {
+    padding: 5px 0 5px 0;
+    -ms-overflow-style: none!important;
+    scrollbar-width: none!important;
+}
+
+.overflowNavbar::-webkit-scrollbar { 
+    display: none!important;
+}
