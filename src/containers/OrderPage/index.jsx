@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
 import Nav from 'react-bootstrap/Nav'
 import Spinner from 'react-bootstrap/Spinner'
 
 import { OrderContainer, Root, StyledContainer } from "../../styles/OrderStyles";
-import { MENU } from '../../routes';
 import Order from "./Order";
 import Dialog from "../../components/Dialog";
 import ErrorAlert from "../../components/ErrorAlert";
@@ -13,9 +13,13 @@ import "../../../src/assets/css/Order.css";
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import { Container, Row, Col } from "react-bootstrap";
+import { ORDER_STATUS } from "../../routes";
 
 const OrderPage = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { state } = useLocation();
+    const { backRoute, readOnly } = state;
     const order = useSelector(state => state.order);
     const facilityName = useSelector(state => state.menu.facilityName);
     const [showModal, setShowModal] = useState(false);
@@ -39,11 +43,11 @@ const OrderPage = () => {
         <Root>
 
             <StyledContainer>
-                <Nav.Link href={MENU} >Back</Nav.Link>
+                <Nav.Link href={backRoute} >Back</Nav.Link>
 
                 <OrderContainer>
                     <h1>{facilityName}</h1>
-                    <Order />
+                    <Order readOnly={readOnly} />
                     {loading && <Spinner animation="border" variant="success" />}
                     {error && <ErrorAlert 
                         errorTitle={"Sorry something went wrong!"} 
@@ -51,12 +55,12 @@ const OrderPage = () => {
                     />}
                 </OrderContainer>
 
-                <div className="orderToastContainer">
+                { !readOnly && <div className="orderToastContainer">
                     <ToastContainer>
                         <Toast animation={false} className="orderToast">
                             <Toast.Body className="orderToastBody">
                                 <Container>
-                                    <Row>
+                                    <Row onClick={() => navigate(ORDER_STATUS)} >
                                         <Col className="orderConfirmation">
                                             <Nav.Link className="orderConfirmationLink">Potvrdi porudžbinu</Nav.Link>
                                         </Col>
@@ -65,7 +69,7 @@ const OrderPage = () => {
                             </Toast.Body>
                         </Toast>
                     </ToastContainer>
-                </div>
+                </div> }
             
             </StyledContainer>
 

@@ -4,7 +4,7 @@ import OrderItem from "./OrderItem";
 import "../../../src/assets/css/Order.css";
 import { round } from '../../utils';
 
-const Order = () => {
+const Order = ({ readOnly }) => {
     const products = useSelector(state => state.order?.products || [])
     const total = useSelector(state => state.order?.total || null)
 
@@ -31,7 +31,7 @@ const Order = () => {
             </div>
             <div>
                 {products.map((el, idx) => (
-                <OrderItem key={idx} item={el} />
+                <OrderItem key={idx} item={el} readOnly={readOnly} />
                 ))}
                 <div>Total <span>{round(total)}</span></div>
             </div>

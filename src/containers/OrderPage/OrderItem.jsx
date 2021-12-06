@@ -7,7 +7,7 @@ import { round } from '../../utils';
 import QuantityButtons from "../QuantityButtons";
 
 
-const OrderItem = ({ item }) => {
+const OrderItem = ({ item, readOnly }) => {
     const dispatch = useDispatch();
 
     const deleteProduct = () => {
@@ -16,14 +16,15 @@ const OrderItem = ({ item }) => {
 
     return(
         <div>
-            <Button onClick={(deleteProduct)}>Remove</Button>
+            {!readOnly && <Button onClick={(deleteProduct)}>Remove</Button>}
             <span>{item.name}</span>
             <span>{round(item.price)}</span>
+            {readOnly? <span>{item.quantity}</span> :
             <QuantityButtons 
                 quantity={item.quantity}
                 id={item.id}
                 product={item}
-              />
+              /> }
         </div>
     )
 }
