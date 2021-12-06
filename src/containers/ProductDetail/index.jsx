@@ -6,6 +6,7 @@ import { DetailsContainer, Image, Modal } from "../../styles/MenuStyles";
 import { addToOrder, updateQuantity } from '../../store/actions/OrderActions';
 import "../../../src/assets/css/ProductDetail.css";
 import { round } from '../../utils';
+import QuantityButtons from '../QuantityButtons';
 
 function ProductDetail({ active, setActive, product}) {
   const dispatch = useDispatch();
@@ -46,11 +47,12 @@ function ProductDetail({ active, setActive, product}) {
           <Row className="orderInformation">
             <Col><h2 className="productDetailPrice">{round(product.price * quantity)}€</h2></Col>
             <Col>
-              <div className="orderQuantity">
-                <Button className="minusQuantity" onClick={decrease}><span>-</span></Button>
-                <span>{quantity}</span>
-                <Button className="plusQuantity" onClick={increase}><span>+</span></Button>
-              </div>
+              <QuantityButtons 
+                increaseCallbak={increase}
+                decreaseCallbak={decrease}
+                quantity={quantity}
+                product={product}
+              />
             </Col>
           </Row>
           <Row>
