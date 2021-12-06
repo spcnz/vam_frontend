@@ -16,7 +16,8 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const OrderPage = () => {
     const dispatch = useDispatch();
-    const order = useSelector(state => state.order)
+    const order = useSelector(state => state.order);
+    const facilityName = useSelector(state => state.menu.facilityName);
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const error = useSelector(state => state.order.error);
@@ -41,6 +42,7 @@ const OrderPage = () => {
                 <Nav.Link href={MENU} >Back</Nav.Link>
 
                 <OrderContainer>
+                    <h1>{facilityName}</h1>
                     <Order />
                     {loading && <Spinner animation="border" variant="success" />}
                     {error && <ErrorAlert 

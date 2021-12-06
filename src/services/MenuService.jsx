@@ -11,7 +11,7 @@ class MenuService extends ApiService {
 
     const data1 = {
         image: "https://img.taste.com.au/JNYsCm2d/w720-h480-cfill-q80/taste/2016/11/grilled-seafood-platter-81225-1.jpeg",
-        objectName: 'Jadran',
+        facilityName: 'Jadran',
         categories: [
             {
                 name: 'Riba',
