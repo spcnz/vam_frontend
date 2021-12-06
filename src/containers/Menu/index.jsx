@@ -54,7 +54,7 @@ const Menu = () => {
                             onFocus={() => setSearchActive(true)} 
                             onBlur={() => setSearchActive(false)}
                         >
-                            <input type="text" className="form-control search" placeholder="Traži" onChange={e => setSearchTerm(e.target.value)}/>
+                            <input type="text" className="form-control search" placeholder="Traži" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
                             <i className="col-2 glyphicon glyphicon-search searchIcon"/>
                             <span onClick={() => setSearchTerm("")}>x</span>
                         </div>
