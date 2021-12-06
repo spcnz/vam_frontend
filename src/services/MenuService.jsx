@@ -21,7 +21,7 @@ class MenuService extends ApiService {
                         id: 1,
                         name: 'Jelo',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        price: 18.2,
+                        price: 18.29999,
                         image: "https://img.taste.com.au/z_S6BhQY/taste/2018/03/apr-18_salmon-with-parsley-salad-3000x2000-136320-1.jpg"
 
                     },
@@ -106,7 +106,7 @@ class MenuService extends ApiService {
                 id: 4,
                 products: [
                     {
-                        id: 1,
+                        id: 11,
                         name: 'Jelo',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,
@@ -114,7 +114,7 @@ class MenuService extends ApiService {
 
                     },
                     {
-                        id: 2,
+                        id: 12,
                         name: 'Losos',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,
@@ -122,7 +122,7 @@ class MenuService extends ApiService {
 
                     },
                     {
-                        id: 3,
+                        id: 13,
                         name: 'Jelo',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,
@@ -136,7 +136,7 @@ class MenuService extends ApiService {
                 id: 5,
                 products: [
                     {
-                        id: 1,
+                        id: 14,
                         name: 'Jelo',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,
@@ -144,7 +144,7 @@ class MenuService extends ApiService {
 
                     },
                     {
-                        id: 2,
+                        id: 15,
                         name: 'Losos',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,
@@ -152,7 +152,7 @@ class MenuService extends ApiService {
 
                     },
                     {
-                        id: 3,
+                        id: 16,
                         name: 'Jelo',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,
@@ -166,7 +166,7 @@ class MenuService extends ApiService {
                 id: 6,
                 products: [
                     {
-                        id: 1,
+                        id: 17,
                         name: 'Jelo',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,
@@ -174,7 +174,7 @@ class MenuService extends ApiService {
 
                     },
                     {
-                        id: 2,
+                        id: 18,
                         name: 'Losos',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,
@@ -182,7 +182,7 @@ class MenuService extends ApiService {
 
                     },
                     {
-                        id: 3,
+                        id: 19,
                         name: 'Jelo',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         price: 18.2,

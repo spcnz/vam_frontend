@@ -1,5 +1,4 @@
 import ProductList from "../ProductList";
-import { Container, Row } from "react-bootstrap";
 import "../../../src/assets/css/CategoryList.css";
 
 const CategoryList = ({ categories }) => {

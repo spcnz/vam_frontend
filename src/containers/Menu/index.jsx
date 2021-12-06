@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row} from 'react-bootstrap';
 
 import { getMenu } from '../../store/actions/MenuActions';
-import { Header, IconInside, Image, SearchBar, SearchInput } from '../../styles/MenuStyles';
+import { Header, Image } from '../../styles/MenuStyles';
 import CategoryNavbarList from '../../components/CategoryNavbarList';
 import useDebounce from '../../hooks/useDebounce';
 import CategoryList from '../../components/CategoryList';
@@ -16,8 +15,9 @@ import "../../../src/assets/css/Menu.css";
 const Menu = () => {
     const dispatch = useDispatch();
     const menu = useSelector(state => state.menu.info || {});
+    const total = useSelector(state => state.order?.total);
     const error = useSelector(state => state.menu.error);
-
+    const [searchActive, setSearchActive] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [data, setData] = useState(menu.categories);
 
@@ -49,16 +49,21 @@ const Menu = () => {
                 <Row>
                     <Header className="header">
                         <Image src={menu.image} className="headerImage" />
-                        <div className="col searchBar">
-                            <input type="text" className="form-control search" placeholder="Traži" onChange={e => setSearchTerm(e.target.value)}/>
+                        <div 
+                            className="col searchBar" 
+                            onFocus={() => setSearchActive(true)} 
+                            onBlur={() => setSearchActive(false)}
+                        >
+                            <input type="text" className="form-control search" placeholder="Traži" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
                             <i className="col-2 glyphicon glyphicon-search searchIcon"/>
+                            <span onClick={() => setSearchTerm("")}>x</span>
                         </div>
                         <h1 className="objectName">{menu.objectName}</h1>
                     </Header>
                 </Row>
             </Container>
             <Container className="menuContent">
-                <CategoryNavbarList list={menu.categories} />
+                <CategoryNavbarList list={debouncedSearchTerm? data: menu.categories} />
                 <Row>
                     <CategoryList categories={debouncedSearchTerm? data: menu.categories} />
                     {error && <ErrorAlert 
@@ -67,7 +72,7 @@ const Menu = () => {
                     />}
                 </Row>
             </Container>
-            <OrderAlert className="orderAlert"/>
+            {total && !searchActive && <OrderAlert className="orderAlert"/>}
         </div>
     )
 }

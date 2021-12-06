@@ -1,4 +1,11 @@
-import { ADD_TO_ORDER, DECREASE_QUANTITY, DISCARD_ORDER, INCREASE_QUANTITY, ORDER_REQUEST_FAILED, REMOVE_PRODUCT } from '../actions/ActionTypes';
+import { 
+  ADD_TO_ORDER, 
+  DECREASE_QUANTITY, 
+  DISCARD_ORDER, 
+  INCREASE_QUANTITY, 
+  ORDER_REQUEST_FAILED, 
+  REMOVE_PRODUCT, 
+  UPDATE_QUANTITY } from '../actions/ActionTypes';
 
 const initialState = {
     products : JSON.parse(localStorage.getItem('order'))?.products || [],
@@ -22,23 +29,21 @@ const orderReducer = (state = initialState, action) => {
 
       return newState;
     case INCREASE_QUANTITY:
-      productsChanged = state.products.reduce((result, product) => {
+      productsChanged = state.products.map(product => {
         if (product.id === action.payload)
-          product = {...product, quantity : product.quantity + 1};
-        result.push(product);
-        return result;
-      }, [])
+          return {...product, quantity : product.quantity + 1};
+        return product;
+      })
       newState = {products: productsChanged, total: calcTotal(productsChanged) };
       saveOrder(newState)
 
       return newState;
     case DECREASE_QUANTITY:
-        productsChanged = state.products.reduce((result, product) => {
+        productsChanged = state.products.map(product => {
           if (product.id === action.payload)
-            product = {...product, quantity : product.quantity - 1};
-          result.push(product);
-          return result;
-        }, [])
+            return {...product, quantity : product.quantity - 1};
+          return product;
+        })
         newState = {products: productsChanged, total: calcTotal(productsChanged) };
         saveOrder(newState)
   
@@ -54,6 +59,15 @@ const orderReducer = (state = initialState, action) => {
       return {...initialState, success: true };
     case ORDER_REQUEST_FAILED:
         return {...state, error: action.payload }
+    case UPDATE_QUANTITY:
+      const { id, quantity } = action.payload;
+      productsChanged = state.products.map(product => {
+        if (product.id === id) 
+          return {...product, quantity: quantity}
+        return product;
+      })
+
+      return {...state, products: productsChanged, total: calcTotal(productsChanged)};
     default:
       return state;
   }

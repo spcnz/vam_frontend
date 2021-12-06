@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { Container } from 'react-bootstrap';
 import OrderItem from "./OrderItem";
 import "../../../src/assets/css/Order.css";
+import { round } from '../../utils';
 
 const Order = () => {
     const products = useSelector(state => state.order?.products || [])
@@ -32,7 +33,7 @@ const Order = () => {
                 {products.map((el, idx) => (
                 <OrderItem key={idx} item={el} />
                 ))}
-                <div>Total <span>{total}</span></div>
+                <div>Total <span>{round(total)}</span></div>
             </div>
         </Container>
     )
