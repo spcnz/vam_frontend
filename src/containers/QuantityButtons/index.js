@@ -9,7 +9,7 @@ const QuantityButtons = ( {
     quantity, 
     id, 
     product,
-    allowRemove=false
+    allowRemove = false
  }) => {
     const dispatch = useDispatch();
     const ordered = useSelector(state => state.order?.products.find(el => el.id === id));
