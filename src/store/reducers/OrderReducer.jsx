@@ -11,7 +11,7 @@ const initialState = {
     products : JSON.parse(localStorage.getItem('order'))?.products || [],
     total:  JSON.parse(localStorage.getItem('order'))?.total || 0,
     error: null,
-    success: true
+    success: null
   };
 
 const orderReducer = (state = initialState, action) => {
@@ -55,7 +55,7 @@ const orderReducer = (state = initialState, action) => {
 
         return newState;
     case DISCARD_ORDER:
-      discardOrder()
+      discardOrder();
       return {...initialState, success: true };
     case ORDER_REQUEST_FAILED:
         return {...state, error: action.payload }
@@ -66,8 +66,10 @@ const orderReducer = (state = initialState, action) => {
           return {...product, quantity: quantity}
         return product;
       })
+      newState = {products: productsChanged, total: calcTotal(productsChanged) };
+      saveOrder(newState)
 
-      return {...state, products: productsChanged, total: calcTotal(productsChanged)};
+      return newState;
     default:
       return state;
   }

@@ -12,20 +12,22 @@ import CategoryList from '../../components/CategoryList';
 import ErrorAlert from '../../components/ErrorAlert';
 import OrderAlert from '../OrderAlert';
 import "../../../src/assets/css/Menu.css";
+import { setFacilityInfo } from '../../store/actions/FacilityActions';
 
 const Menu = () => {
     const dispatch = useDispatch();
     const menu = useSelector(state => state.menu.info || {});
     const total = useSelector(state => state.order?.total);
     const error = useSelector(state => state.menu.error);
-    const { facilityId } = useParams();
+    const { facilityId, table } = useParams();
 
     const [searchActive, setSearchActive] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [data, setData] = useState(menu.categories);
 
     useEffect(() => {
-        dispatch(getMenu(facilityId))
+        dispatch(getMenu(facilityId));
+        dispatch(setFacilityInfo({ facilityId, table}));
     },[dispatch])
 
     const debouncedSearchTerm = useDebounce(searchTerm, 500);

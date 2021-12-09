@@ -2,14 +2,13 @@ import { MENU_REQUEST_FAILED, SET_MENU } from '../actions/ActionTypes';
 
 const initialState = {
     info: { categories: [] },
-    facilityName: localStorage.getItem('facility') || "",
     error: null
   };
 
 const menuReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MENU:
-      saveFacility(action.payload.facilityName, action.payload.facility);
+      saveFacilityName(action.payload.facilityName);
 
       return {...state, info: action.payload, error: null}
     case MENU_REQUEST_FAILED:
@@ -19,9 +18,9 @@ const menuReducer = (state = initialState, action) => {
   }
 };
 
-const saveFacility = (name, id) => {
-  localStorage.setItem('facility', name);
-  localStorage.setItem('facilityId', id);
+const saveFacilityName = name => {
+  const facility = JSON.parse(localStorage.getItem('facility')) || {};
+  localStorage.setItem('facility', JSON.stringify({...facility, name}));
 }
 
 export default menuReducer;

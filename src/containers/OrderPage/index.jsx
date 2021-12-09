@@ -22,22 +22,32 @@ const OrderPage = () => {
     const { backRoute, readOnly } = state;
     const order = useSelector(state => state.order);
     const facilityName = useSelector(state => state.menu.facilityName);
+    const table = useSelector(state => state.facility.table);
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const error = useSelector(state => state.order.error);
+    console.log('here');
 
     const onConfirmClick = () => {
-        dispatch(confirmOrder(order))
+        dispatch(confirmOrder({ order, table }))
         setShowModal(false);
         setLoading(true);
     }
 
     useEffect(() => setLoading(false),[error])
 
-    useEffect(() => {
-        if(order.success)
-            setLoading(false);
-        },[order])
+    // useEffect(() => {
+    //     if(order.success) {
+    //         setLoading(false);
+    //         // navigate(ORDER_STATUS);
+    //     }
+    //     },[order])
+
+    const onOrderClick = () => {
+        dispatch(confirmOrder(order))
+        navigate(ORDER_STATUS);
+
+    }
 
     return(
         <Root>
@@ -60,7 +70,7 @@ const OrderPage = () => {
                         <Toast animation={false} className="orderToast">
                             <Toast.Body className="orderToastBody">
                                 <Container>
-                                    <Row onClick={() => navigate(ORDER_STATUS)} >
+                                    <Row onClick={onOrderClick} >
                                         <Col className="orderConfirmation">
                                             <Nav.Link className="orderConfirmationLink">Potvrdi porudžbinu</Nav.Link>
                                         </Col>
