@@ -9,7 +9,7 @@ const initialState = {
 const menuReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MENU:
-      saveFacilityName(action.payload.facilityName);
+      saveFacility(action.payload.facilityName, action.payload.facility);
 
       return {...state, info: action.payload, error: null}
     case MENU_REQUEST_FAILED:
@@ -19,8 +19,9 @@ const menuReducer = (state = initialState, action) => {
   }
 };
 
-const saveFacilityName = name => {
+const saveFacility = (name, id) => {
   localStorage.setItem('facility', name);
+  localStorage.setItem('facilityId', id);
 }
 
 export default menuReducer;

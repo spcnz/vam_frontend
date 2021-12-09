@@ -16,7 +16,7 @@ const OrderAlert = () => {
   const showOrderPage = () => {
     navigate(ORDER, { state: { 
         readOnly : false, 
-        backRoute: MENU
+        backRoute: MENU.replace(":facilityId", localStorage.getItem("facilityId"))
     }})
 }
 

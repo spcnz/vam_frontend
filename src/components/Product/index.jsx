@@ -19,7 +19,7 @@ const Product = ( { product }) => {
                         <div className="price">{round(product.price)}€</div>
                     </div>
                     <div className="col-4 productImageContainer">
-                        <img src={product.image} alt="Food" className="productImage"/>
+                        <img src={product.item_images} alt="Food" className="productImage"/>
                     </div>
                 </div>
                 <hr className="col-12 divider"></hr>

@@ -18,7 +18,7 @@ const OrderStatusPage = () => {
 
     return (
         <div>
-            <Nav.Link href={MENU} >Menu</Nav.Link>
+            <Nav.Link href={MENU.replace(":facilityId", localStorage.getItem("facilityId"))} >Menu</Nav.Link>
             <Employee />
             <Button onClick={showOrderPage}>
                 Pregledaj racun
