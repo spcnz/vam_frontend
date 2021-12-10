@@ -12,7 +12,7 @@ const facilityReducer = (state = initialState, action) => {
         console.log(action.payload);
       saveFacility(action.payload);
 
-      return {...state}
+      return {...state, table: action.payload.table, id: action.payload.facilityId }
     default:
       return state;
   }

@@ -1,12 +1,23 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+
 import { Container } from 'react-bootstrap';
 import OrderItem from "./OrderItem";
 import "../../../src/assets/css/Order.css";
 import { round } from '../../utils';
+import { getOrder } from "../../store/actions/OrderActions";
 
 const Order = ({ readOnly }) => {
-    const products = useSelector(state => state.orderItem?.all || [])
-    const total = useSelector(state => state.orderItem?.total || null)
+    const dispatch = useDispatch();
+    const orderId = useSelector(state => state.order.id);
+    const order = useSelector(state => {
+        return readOnly? state.order.ordered : state.orderItem
+    })
+   
+    useEffect((() => {
+        if (orderId)
+            dispatch(getOrder(orderId));
+    }), [orderId])
 
     const formatDate = date => {
         const year = date.getYear();
@@ -30,10 +41,10 @@ const Order = ({ readOnly }) => {
                 <span>{formatTime(new Date())}</span>
             </div>
             <div>
-                {products.map((el, idx) => (
+                {order?.all.map((el, idx) => (
                 <OrderItem key={idx} item={el} readOnly={readOnly} />
                 ))}
-                <div>Total <span>{round(total)}</span></div>
+                <div>Total <span>{round(order?.total)}</span></div>
             </div>
         </Container>
     )

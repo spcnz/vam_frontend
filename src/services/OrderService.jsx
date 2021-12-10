@@ -3,7 +3,8 @@ import ApiService from './ApiService';
 
 
 const ENDPOINTS = {
-  POST: 'order/'
+  POST: 'order/',
+  GET: 'order/:id/'
 };
 
 class OrderService extends ApiService {
@@ -21,13 +22,15 @@ class OrderService extends ApiService {
         //     ordered_items: order.products
         //   }
         // );
-        console.log('u servicee ', order)
         const { data } = await this.apiClient.post(ENDPOINTS.POST, this.transformData(order, table));
-        console.log(data)
-        // return data;
-        return data;
 
-         
+        return data;
+    };
+
+    getOne = async id => {
+        const { data } = await this.apiClient.get(ENDPOINTS.GET.replace(":id", id));
+
+        return data;
     };
 
     transformData = (order, table) => {

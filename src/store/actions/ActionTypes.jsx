@@ -16,7 +16,8 @@ export const CONFIRM_ORDER = 'CONFIRM_ORDER';
 export const DISCARD_ORDER = 'DISCARD_ORDER';
 export const ORDER_REQUEST_FAILED = 'ORDER_REQUEST_FAILED';
 export const SET_ORDER_ID = 'SET_ORDER_ID';
-
+export const GET_ORDER = 'GET_ORDER';
+export const SET_ORDER = 'SET_ORDER';
 
 //==== FACILITY ===
 export const SET_FACILITY_INFO = 'SET_FACILITY_INFO';

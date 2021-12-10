@@ -5,6 +5,8 @@ import {
     REMOVE_PRODUCT, 
     UPDATE_QUANTITY } from '../actions/ActionTypes';
 
+import { calcTotal } from "../../utils";
+
 const initialState = {
     all : JSON.parse(localStorage.getItem('order'))?.all || [],
     total:  JSON.parse(localStorage.getItem('order'))?.total || 0,
@@ -66,10 +68,7 @@ const orderItemReducer = (state = initialState, action) => {
     }
   };
 
-const calcTotal = products => {
-    return products.reduce((res,item) => res + item.price * item.quantity ,0)
-  }
-  
+
 const saveOrder = order => {
     localStorage.setItem('order', JSON.stringify(order));
 }

@@ -24,20 +24,11 @@ const OrderPage = () => {
     const facilityName = useSelector(state => state.menu.name);
     const table = useSelector(state => state.facility.table);
     const [showModal, setShowModal] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const error = useSelector(state => state.order.error);
-    console.log('here ', backRoute);
 
     const onConfirmClick = () => {
         dispatch(confirmOrder({ order, table }))
-        setLoading(true);
-        // navigate(ORDER_STATUS);
-
+        navigate(ORDER_STATUS);
     }
-
-    useEffect(() => setLoading(false),[error])
-
-
     return(
         <Root>
             <StyledContainer>
@@ -46,11 +37,11 @@ const OrderPage = () => {
                 <OrderContainer>
                     <h1>{facilityName}</h1>
                     <Order readOnly={readOnly} />
-                    {loading && <Spinner animation="border" variant="success" />}
-                    {error && <ErrorAlert 
+                    {/* {loading && <Spinner animation="border" variant="success" />} */}
+                    {/* {error && <ErrorAlert 
                         errorTitle={"Sorry something went wrong!"} 
                         errorMsg={"Can't confirm order right now. Please try again later."}
-                    />}
+                    />} */}
                 </OrderContainer>
 
                 { !readOnly && <div className="orderToastContainer">
