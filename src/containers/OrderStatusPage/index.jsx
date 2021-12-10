@@ -9,7 +9,7 @@ import Employee from "./Employee";
 
 const OrderStatusPage = () => {
     const navigate = useNavigate();
-    const facilityId = useSelector(state => state.facility.id);
+    const { id, table } = useSelector(state => state.facility);
 
     const showOrderPage = () => {
         navigate(ORDER, { state: { 
@@ -17,10 +17,11 @@ const OrderStatusPage = () => {
             backRoute: ORDER_STATUS
         }})
     }
+    const menuPath = () => MENU.replace(":facilityId", id).replace(":table", table);
 
     return (
         <div>
-            <Nav.Link href={MENU.replace(":facilityId", facilityId)} >Menu</Nav.Link>
+            <Nav.Link href={menuPath()} >Menu</Nav.Link>
             <Employee />
             <Button onClick={showOrderPage}>
                 Pregledaj racun

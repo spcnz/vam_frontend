@@ -4,7 +4,7 @@ import "../../../src/assets/css/Product.css";
 import { round } from '../../utils';
 import QuantityButtons from "../../containers/QuantityButtons";
 
-const DESCRIPTION_LENGTH = 20;
+const DESCRIPTION_LENGTH = 100;
 
 const Product = ( { product }) => {
     const [show, setShow] = useState(false);

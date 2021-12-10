@@ -10,14 +10,15 @@ import { round } from '../../utils';
 import { MENU, ORDER } from '../../routes';
 
 const OrderAlert = () => {
-  const total = useSelector(state => state.order.total);
-  const facilityId = useSelector(state => state.facility.id);
+  const total = useSelector(state => state.orderItem?.total);
+  const { id, table } = useSelector(state => state.facility);
   const navigate = useNavigate();
-
+  console.log(id, table, 'iz order alert ')
   const showOrderPage = () => {
+
     navigate(ORDER, { state: { 
         readOnly : false, 
-        backRoute: MENU.replace(":facilityId", facilityId)
+        backRoute: MENU.replace(":facilityId", id).replace(":table", table)
     }})
 }
 

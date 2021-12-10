@@ -1,8 +1,8 @@
 import { SET_FACILITY_INFO } from '../actions/ActionTypes';
 
 const initialState = {
-    facilityName: JSON.parse(localStorage.getItem('facility'))?.name || "",
-    facilityId: JSON.parse(localStorage.getItem('facility'))?.id,
+    name: JSON.parse(localStorage.getItem('facility'))?.name || "",
+    id: JSON.parse(localStorage.getItem('facility'))?.id,
     table: JSON.parse(localStorage.getItem('facility'))?.t
   };
 

@@ -12,7 +12,7 @@ const QuantityButtons = ( {
     allowRemove = false
  }) => {
     const dispatch = useDispatch();
-    const ordered = useSelector(state => state.order?.products.find(el => el.id === id));
+    const ordered = useSelector(state => state.orderItem?.all.find(el => el.id === id));
 
     const setIncreaseCallback = () => {
         return increaseCallbak ? increaseCallbak : increase;

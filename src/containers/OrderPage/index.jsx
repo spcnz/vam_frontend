@@ -20,13 +20,13 @@ const OrderPage = () => {
     const navigate = useNavigate();
     const { state } = useLocation();
     const { backRoute, readOnly } = state;
-    const order = useSelector(state => state.order);
-    const facilityName = useSelector(state => state.menu.facilityName);
+    const order = useSelector(state => state.orderItem);
+    const facilityName = useSelector(state => state.menu.name);
     const table = useSelector(state => state.facility.table);
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const error = useSelector(state => state.order.error);
-    console.log('here');
+    console.log('here ', backRoute);
 
     const onConfirmClick = () => {
         dispatch(confirmOrder({ order, table }))

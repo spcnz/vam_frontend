@@ -5,8 +5,8 @@ import "../../../src/assets/css/Order.css";
 import { round } from '../../utils';
 
 const Order = ({ readOnly }) => {
-    const products = useSelector(state => state.order?.products || [])
-    const total = useSelector(state => state.order?.total || null)
+    const products = useSelector(state => state.orderItem?.all || [])
+    const total = useSelector(state => state.orderItem?.total || null)
 
     const formatDate = date => {
         const year = date.getYear();

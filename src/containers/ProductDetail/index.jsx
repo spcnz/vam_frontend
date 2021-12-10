@@ -10,7 +10,7 @@ import QuantityButtons from '../QuantityButtons';
 
 function ProductDetail({ active, setActive, product}) {
   const dispatch = useDispatch();
-  const ordered = useSelector(state => state.order?.products.find(el => el.id === product.id))
+  const ordered = useSelector(state => state.orderItem?.all.find(el => el.id === product.id))
   const [quantity, setQuantity] = useState(ordered? ordered.quantity : 1);
 
   const decrease = () => {

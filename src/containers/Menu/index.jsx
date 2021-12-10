@@ -17,7 +17,7 @@ import { setFacilityInfo } from '../../store/actions/FacilityActions';
 const Menu = () => {
     const dispatch = useDispatch();
     const menu = useSelector(state => state.menu.info || {});
-    const total = useSelector(state => state.order?.total);
+    const total = useSelector(state => state.orderItem?.total);
     const error = useSelector(state => state.menu.error);
     const { facilityId, table } = useParams();
 
