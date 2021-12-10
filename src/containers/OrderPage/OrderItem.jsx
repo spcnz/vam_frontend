@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button'
-import { removeProduct } from '../../store/actions/OrderActions';
+import { removeProduct } from '../../store/actions/OrderItemActions';
 import "../../../src/assets/css/Order.css";
 import "../../../src/assets/css/ProductDetail.css";
 import { round } from '../../utils';

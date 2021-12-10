@@ -30,28 +30,16 @@ const OrderPage = () => {
 
     const onConfirmClick = () => {
         dispatch(confirmOrder({ order, table }))
-        setShowModal(false);
         setLoading(true);
+        // navigate(ORDER_STATUS);
+
     }
 
     useEffect(() => setLoading(false),[error])
 
-    // useEffect(() => {
-    //     if(order.success) {
-    //         setLoading(false);
-    //         // navigate(ORDER_STATUS);
-    //     }
-    //     },[order])
-
-    const onOrderClick = () => {
-        dispatch(confirmOrder(order))
-        navigate(ORDER_STATUS);
-
-    }
 
     return(
         <Root>
-
             <StyledContainer>
                 <Nav.Link href={backRoute} >Back</Nav.Link>
 
@@ -70,7 +58,7 @@ const OrderPage = () => {
                         <Toast animation={false} className="orderToast">
                             <Toast.Body className="orderToastBody">
                                 <Container>
-                                    <Row onClick={onOrderClick} >
+                                    <Row onClick={onConfirmClick} >
                                         <Col className="orderConfirmation">
                                             <Nav.Link className="orderConfirmationLink">Potvrdi porudžbinu</Nav.Link>
                                         </Col>

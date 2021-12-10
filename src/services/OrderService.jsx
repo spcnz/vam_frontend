@@ -21,9 +21,9 @@ class OrderService extends ApiService {
         //     ordered_items: order.products
         //   }
         // );
-      
+        console.log('u servicee ', order)
         const { data } = await this.apiClient.post(ENDPOINTS.POST, this.transformData(order, table));
-
+        console.log(data)
         // return data;
         return data;
 
@@ -35,7 +35,7 @@ class OrderService extends ApiService {
         table_order : table,
         waiter_assigned: 1,
         date : new Date(),
-        order_items : order.products.map(item => {
+        order_items : order.all.map(item => {
           return { amount: item.quantity, menu_item: item.id }
         })
       }

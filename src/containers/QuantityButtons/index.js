@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
-import { increaseQuantity, decreaseQuantity, addToOrder, removeProduct } from '../../store/actions/OrderActions';
+import { increaseQuantity, decreaseQuantity, addToOrder, removeProduct } from '../../store/actions/OrderItemActions';
 import "../../../src/assets/css/ProductDetail.css";
 
 const QuantityButtons = ( { 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
 import { DetailsContainer, Image, Modal } from "../../styles/MenuStyles";
-import { addToOrder, updateQuantity } from '../../store/actions/OrderActions';
+import { addToOrder, updateQuantity } from '../../store/actions/OrderItemActions';
 import "../../../src/assets/css/ProductDetail.css";
 import { round } from '../../utils';
 import QuantityButtons from '../QuantityButtons';
