@@ -1,5 +1,5 @@
 import config from '../config';
-import { updateStatus } from '../store/actions/OrderActions';
+import { updatedStatus } from '../store/actions/OrderActions';
 
 class CustomerSocketService  {
 
@@ -10,6 +10,16 @@ class CustomerSocketService  {
 
     connect = (orderId, store) => {
         this.dispatch = store?.dispatch;
+
+        const arr = ["IN PROGRESS", "PREPARED", "PAID"];
+        for (let i=0; i < 3; i++) {
+            const ind = i;
+            setTimeout(disp => {
+                disp(updatedStatus({ id: 138, status: arr[ind]}))
+            }, 2*i * 4000, store?.dispatch)
+        }
+
+        
         this.socket = new WebSocket(this.options.baseURL + `${orderId}/`);
         this.socket.onopen = () => {
             console.log('Waiter webSocket open');
@@ -23,12 +33,15 @@ class CustomerSocketService  {
         };
         this.socket.onmessage = ({ data }) => {
             console.log("received something !", data)
-            this.dispatch(updateStatus("neki"));
+            this.dispatch(updatedStatus(data));
         };
+        
     }
 
     state = () => this.socket?.readyState;    
 }
+
+
 
 const options = {
     baseURL: `${config.WS_BASE_URL}/ws/order/notifications/`

@@ -37,7 +37,8 @@ export function* openWaiterWs({ payload }) {
 
 export function* openCustomerWs({ payload }) {
   try {
-    yield call(CustomerSocketService.connect, payload);
+    console.log('tuusam')
+    yield call(CustomerSocketService.connect, payload, store);
   } catch (error) {
     //nesto heh
   }
