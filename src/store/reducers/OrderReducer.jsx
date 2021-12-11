@@ -1,13 +1,15 @@
-import { DISCARD_ORDER, ORDER_REQUEST_FAILED, SET_ORDER_ID, SET_ORDER, SET_ORDERS, NEW_NOTIFICATION } from '../actions/ActionTypes';
+import { DISCARD_ORDER, ORDER_REQUEST_FAILED, SET_ORDER_ID, SET_ORDER, SET_ORDERS, NEW_NOTIFICATION, UPDATED_STATUS } from '../actions/ActionTypes';
 
 import { calcTotal } from "../../utils";
+import { RECEIVED } from "../../orderStatus";
 
 const initialState = {
     error: null,
     success: null,
     id: localStorage.getItem('id'),
     ordered: null,
-    all: []
+    all: [],
+    status: RECEIVED
   };
 
 const orderReducer = (state = initialState, action) => {
@@ -32,9 +34,13 @@ const orderReducer = (state = initialState, action) => {
 
         return {...state, all : orders};
     case NEW_NOTIFICATION:
-      console.log(action.payload)
         const newOrder = transformOrder(action.payload)
+
         return {...state, all : [newOrder,...state.all]};
+    case UPDATED_STATUS:
+        const { status } = action.payload;
+          
+        return {...state, status };
     default:
       return state;
   }

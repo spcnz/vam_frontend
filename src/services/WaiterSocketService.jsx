@@ -1,5 +1,5 @@
 import config from '../config';
-import { orderArrived, updateStatus } from '../store/actions/OrderActions';
+import { orderArrived } from '../store/actions/OrderActions';
 
 class WaiterSocketService  {
 

@@ -1,4 +1,4 @@
-import { CONFIRM_ORDER, DISCARD_ORDER, GET_ORDER, GET_ORDERS, NEW_NOTIFICATION, OPEN_CUSTOMER_WS, OPEN_WAITER_WS, ORDER_REQUEST_FAILED, SET_ORDER, SET_ORDERS, SET_ORDER_ID, UPDATE_STATUS } from './ActionTypes';
+import { CONFIRM_ORDER, DISCARD_ORDER, GET_ORDER, GET_ORDERS, NEW_NOTIFICATION, OPEN_CUSTOMER_WS, OPEN_WAITER_WS, ORDER_REQUEST_FAILED, SET_ORDER, SET_ORDERS, SET_ORDER_ID, UPDATED_STATUS, UPDATE_STATUS } from './ActionTypes';
 
 export const confirmOrder = payload => {
   return {
@@ -81,6 +81,14 @@ export const setOrders = payload => {
 export const orderArrived = payload => {
   return {
     type: NEW_NOTIFICATION,
+    payload
+  };
+};
+
+export const updatedStatus = payload => {
+  console.log('ispaljena akcija')
+  return {
+    type: UPDATED_STATUS,
     payload
   };
 };

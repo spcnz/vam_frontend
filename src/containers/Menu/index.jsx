@@ -30,6 +30,10 @@ const Menu = () => {
         dispatch(setFacilityInfo({ facilityId, table}));
     },[dispatch])
 
+    useEffect(() => {
+        setData(menu.categories);
+    },[menu])
+
     const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
     useEffect(

@@ -9,6 +9,7 @@ import Nav from 'react-bootstrap/Nav';
 import { MENU, ORDER, ORDER_STATUS } from "../../routes";
 import Employee from "./Employee";
 import { openCustomerWs } from "../../store/actions/OrderActions";
+import StatusStepper from "./StatusStepper";
 
 const OrderStatusPage = () => {
     const navigate = useNavigate();
@@ -35,6 +36,7 @@ const OrderStatusPage = () => {
             <Button onClick={showOrderPage}>
                 Pregledaj racun
             </Button>
+            <StatusStepper />
         </div>
     )
 
