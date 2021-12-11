@@ -6,8 +6,12 @@ import { DetailsContainer, Image, Modal } from "../../styles/MenuStyles";
 import { addToOrder, updateQuantity } from '../../store/actions/OrderActions';
 import "../../../src/assets/css/ProductDetail.css";
 import { round } from '../../utils';
+<<<<<<< HEAD
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+=======
+import QuantityButtons from '../QuantityButtons';
+>>>>>>> f66fb0fa89cafbed25e5e8d23ea02bff372aacdd
 
 function ProductDetail({ active, setActive, product}) {
   const dispatch = useDispatch();
@@ -48,11 +52,12 @@ function ProductDetail({ active, setActive, product}) {
           <Row className="orderInformation">
             <Col><h2 className="productDetailPrice">{round(product.price * quantity)}€</h2></Col>
             <Col>
-              <div className="orderQuantity">
-                <Button className="minusQuantity" onClick={decrease}><span>-</span></Button>
-                <span>{quantity}</span>
-                <Button className="plusQuantity" onClick={increase}><span>+</span></Button>
-              </div>
+              <QuantityButtons 
+                increaseCallbak={increase}
+                decreaseCallbak={decrease}
+                quantity={quantity}
+                product={product}
+              />
             </Col>
           </Row>
           <Row>

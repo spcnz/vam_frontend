@@ -2,12 +2,13 @@ import { useState } from "react";
 import ProductDetail from "../../containers/ProductDetail";
 import "../../../src/assets/css/Product.css";
 import { round } from '../../utils';
+import QuantityButtons from "../../containers/QuantityButtons";
 
 const DESCRIPTION_LENGTH = 20;
 
 const Product = ( { product }) => {
     const [show, setShow] = useState(false);
-
+    
     return (
         <div>
             <div onClick={() => setShow(true)} className="productContainer">
@@ -23,6 +24,11 @@ const Product = ( { product }) => {
                 </div>
                 <hr className="col-12 divider"></hr>
             </div>
+            <QuantityButtons 
+                id={product.id} 
+                product={product}
+                allowRemove={true}
+            />
             {show && <ProductDetail active={show} setActive={setShow} product={product}/>}
         </div>
     )
