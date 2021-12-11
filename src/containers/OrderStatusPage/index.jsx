@@ -5,12 +5,43 @@ import { useNavigate } from "react-router";
 
 import { Button } from "react-bootstrap";
 import Nav from 'react-bootstrap/Nav';
+import { Container, Row, Col } from "react-bootstrap";
 
 import { MENU, ORDER, ORDER_STATUS } from "../../routes";
 import Employee from "./Employee";
 import { openCustomerWs } from "../../store/actions/OrderActions";
 import StatusStepper from "./StatusStepper";
 import "../../assets/css/OrderStatusPage.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+
+const Btn = ( { showOrderPage } ) => {
+    return (
+        <Container className="buttonRow">
+        <Row>
+            <div>
+                <Button onClick={showOrderPage} variant="contained" className="confirmOrderButton">Pregledaj račun</Button>
+            </div>
+        </Row>
+    </Container>
+    )
+}
+
+
+const Back = ({ backRoute }) => {
+    return (
+        <Container>
+            <Row>
+                <Button href={backRoute} className="col-1 backToMenu">
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                    {/* <span>Menu</span> */}
+                </Button>
+            </Row>
+        </Container>
+    )
+}
+
 
 const OrderStatusPage = () => {
     const navigate = useNavigate();
@@ -32,20 +63,22 @@ const OrderStatusPage = () => {
 
     return (
         <div>
-            <Nav.Link href={menuPath()} >Menu</Nav.Link>
+            <Back backRoute={menuPath()} />
             <Employee />
             <h1 style={{marginLeft: '10%'}}>Vaša porudžbina je : </h1>
             <StatusStepper />
-            <div className="orderBtnContainer">
-                <button onClick={showOrderPage} className="orderBtn">
-                    Pregledaj račun
-                </button>
-            </div>
+            <Btn showOrderPage={showOrderPage}/>
+
+
+
+
         </div>
     )
 
 
 }
+
+
 
 
 export default OrderStatusPage;
