@@ -35,16 +35,16 @@ const Order = ({ readOnly }) => {
     }
 
     return(
-        <Container>
-            <div>
-                <span>{formatDate(new Date())}</span>
-                <span>{formatTime(new Date())}</span>
+        <Container className="orderDetailsContainer">
+            <div className="dateTime">
+                <span className="date">{formatDate(new Date())}</span>
+                <span className="time">{formatTime(new Date())}</span>
             </div>
             <div>
                 {order?.all.map((el, idx) => (
                 <OrderItem key={idx} item={el} readOnly={readOnly} />
                 ))}
-                <div>Total <span>{round(order?.total)}</span></div>
+                <div className="total">Total <span>{round(order?.total)}</span></div>
             </div>
         </Container>
     )

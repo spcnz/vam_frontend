@@ -6,12 +6,9 @@ import { DetailsContainer, Image, Modal } from "../../styles/MenuStyles";
 import { addToOrder, updateQuantity } from '../../store/actions/OrderItemActions';
 import "../../../src/assets/css/ProductDetail.css";
 import { round } from '../../utils';
-<<<<<<< HEAD
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-=======
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import QuantityButtons from '../QuantityButtons';
->>>>>>> f66fb0fa89cafbed25e5e8d23ea02bff372aacdd
 
 function ProductDetail({ active, setActive, product}) {
   const dispatch = useDispatch();

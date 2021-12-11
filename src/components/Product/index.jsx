@@ -20,6 +20,12 @@ const Product = ( { product }) => {
                     </div>
                     <div className="col-4 productImageContainer">
                         <img src={product.item_images} alt="Food" className="productImage"/>
+                        {/* <QuantityButtons 
+                            id={product.id} 
+                            product={product}
+                            allowRemove={true}
+                        />
+                        {show && <ProductDetail active={show} setActive={setShow} product={product}/>} */}
                     </div>
                 </div>
                 <hr className="col-12 divider"></hr>

@@ -14,6 +14,9 @@ import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import { Container, Row, Col } from "react-bootstrap";
 import { ORDER_STATUS } from "../../routes";
+import Button from '@mui/material/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const OrderPage = () => {
     const dispatch = useDispatch();
@@ -31,45 +34,33 @@ const OrderPage = () => {
     }
     return(
         <Root>
-            <StyledContainer>
-                <Nav.Link href={backRoute} >Back</Nav.Link>
+            {/* <Nav.Link href={backRoute} >Back</Nav.Link> */}
 
-                <OrderContainer>
-                    <h1>{facilityName}</h1>
-                    <Order readOnly={readOnly} />
-                    {/* {loading && <Spinner animation="border" variant="success" />} */}
-                    {/* {error && <ErrorAlert 
-                        errorTitle={"Sorry something went wrong!"} 
-                        errorMsg={"Can't confirm order right now. Please try again later."}
-                    />} */}
-                </OrderContainer>
-
-                { !readOnly && <div className="orderToastContainer">
-                    <ToastContainer>
-                        <Toast animation={false} className="orderToast">
-                            <Toast.Body className="orderToastBody">
-                                <Container>
-                                    <Row onClick={onConfirmClick} >
-                                        <Col className="orderConfirmation">
-                                            <Nav.Link className="orderConfirmationLink">Potvrdi porudžbinu</Nav.Link>
-                                        </Col>
-                                    </Row>
-                                </Container>
-                            </Toast.Body>
-                        </Toast>
-                    </ToastContainer>
-                </div> }
+            <Container>
+                <Row>
+                    <Button href={backRoute} className="col-1 backToMenu">
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                        {/* <span>Menu</span> */}
+                    </Button>
+                </Row>
+            </Container>
             
-            </StyledContainer>
+            <Container className="orderContainer">
+                <Row className="orderRow">
+                    {/* <h1 className="orderFacilityName">{facilityName}</h1> */}
+                    <Order readOnly={readOnly} />
+                </Row>
+            </Container>
 
-            <Dialog
-                show={showModal}
-                handleClose={() => setShowModal(false)}
-                title="Confirm your order"
-                message="neka porukica mozda malo duza hehe"
-                yesCallback={onConfirmClick}
-            />
-
+            { !readOnly &&
+            <Container className="buttonRow">
+                <Row>
+                    <div>
+                        <Button onClick={onConfirmClick} variant="contained" className="confirmOrderButton">Potvrdi porudžbinu</Button>
+                    </div>
+                </Row>
+            </Container>
+            }
         </Root>
     )
 }

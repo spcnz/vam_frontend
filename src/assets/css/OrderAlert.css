@@ -8,12 +8,11 @@
 }
 
 .orderConfirmation {
-    color: white!important;
     float: left;
 }
 
 .orderTotal {
-    margin-top: 5px!important;
+    float: right;
 }
 
 .orderToastBody {
@@ -24,6 +23,13 @@
 .orderToastContainer {
     position:sticky;
     bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.orderAlertContainer {
+    position:sticky;
+    bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
 }
