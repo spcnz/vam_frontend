@@ -28,20 +28,17 @@ const Btn = ( { showOrderPage } ) => {
     )
 }
 
-
 const Back = ({ backRoute }) => {
     return (
         <Container>
             <Row>
-                <Button href={backRoute} className="col-1 backToMenu">
+                <Button href={backRoute} className="col-1 backToMenuFromStatus">
                     <FontAwesomeIcon icon={faArrowLeft} />
-                    {/* <span>Menu</span> */}
                 </Button>
             </Row>
         </Container>
     )
 }
-
 
 const OrderStatusPage = () => {
     const navigate = useNavigate();
