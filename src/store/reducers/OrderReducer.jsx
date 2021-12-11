@@ -1,4 +1,4 @@
-import { DISCARD_ORDER, ORDER_REQUEST_FAILED, SET_ORDER_ID, SET_ORDER } from '../actions/ActionTypes';
+import { DISCARD_ORDER, ORDER_REQUEST_FAILED, SET_ORDER_ID, SET_ORDER, SET_ORDERS, NEW_NOTIFICATION } from '../actions/ActionTypes';
 
 import { calcTotal } from "../../utils";
 
@@ -6,7 +6,8 @@ const initialState = {
     error: null,
     success: null,
     id: localStorage.getItem('id'),
-    ordered: null
+    ordered: null,
+    all: []
   };
 
 const orderReducer = (state = initialState, action) => {
@@ -22,9 +23,18 @@ const orderReducer = (state = initialState, action) => {
         
         return { error: null, success: true, id: action.payload };
     case SET_ORDER:
+      console.log('ja pozvana? ')
         const ordObj = transformData(action.payload);
 
         return {...state, ordered : ordObj };
+    case SET_ORDERS:
+        const orders = action.payload.results.map(order => transformOrder(order));
+
+        return {...state, all : orders};
+    case NEW_NOTIFICATION:
+      console.log(action.payload)
+        const newOrder = transformOrder(action.payload)
+        return {...state, all : [newOrder,...state.all]};
     default:
       return state;
   }
@@ -37,6 +47,16 @@ const discardOrder = () => {
 const saveOrderId = id => {
   localStorage.setItem('id', id);
 }
+
+const transformOrder = order => 
+    ({
+      id: order.id,
+      date: order.date,
+      table: order.table_order,
+      waiter: order.waiter_assigned,
+      items: order.order_items,
+      status: order.status
+    })
 
 const transformData = order => {
   const all = order.order_items.map(item => {

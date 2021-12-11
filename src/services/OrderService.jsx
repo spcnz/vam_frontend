@@ -1,28 +1,16 @@
-import orderReducer from '../store/reducers/OrderReducer';
 import ApiService from './ApiService';
-
 
 const ENDPOINTS = {
   POST: 'order/',
-  GET: 'order/:id/'
+  GET: 'order/:id/',
+  PUT: 'order/',
+  ALL: 'order/'
 };
 
 class OrderService extends ApiService {
 
-
     create = async ({ order, table }) => {
-
-      // if (!this.apiSocket.state()) 
-      //   this.openConnection();
-      // this.apiSocket.sendData(order);
-      // console.log('Socket state ', this.apiSocket.state())
-        // const { data } = await this.apiClient.post(ENDPOINTS.CREATE, 
-        //   {
-        //     table_id: 1,
-        //     ordered_items: order.products
-        //   }
-        // );
-        const { data } = await this.apiClient.post(ENDPOINTS.POST, this.transformData(order, table));
+        const { data } = await this.apiClient.post(ENDPOINTS.POST, transformData(order, table));
 
         return data;
     };
@@ -33,20 +21,28 @@ class OrderService extends ApiService {
         return data;
     };
 
-    transformData = (order, table) => {
-      return { 
-        table_order : table,
-        waiter_assigned: 1,
-        date : new Date(),
-        order_items : order.all.map(item => {
-          return { amount: item.quantity, menu_item: item.id }
-        })
-      }
+    updateStatus = async ({ id, status }) => {
+      const { data } = await this.apiClient.put(ENDPOINTS.PUT, { id, status });
+      
+      return data;
     }
 
-    openConnection = () => {
-      this.apiSocket.connect();
+    getAll = async () => {
+      const { data } = await this.apiClient.get(ENDPOINTS.ALL);
+      
+      return data;
     }
+}
+
+const transformData = (order, table) => {
+  return { 
+    table_order : table,
+    waiter_assigned: 1,
+    date : new Date(),
+    order_items : order.all.map(item => {
+      return { amount: item.quantity, menu_item: item.id }
+    })
+  }
 }
 
 const orderService = new OrderService();

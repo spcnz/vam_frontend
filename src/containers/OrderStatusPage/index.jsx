@@ -1,15 +1,24 @@
-import { useSelector } from "react-redux";
-import { Button } from "react-bootstrap";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
+
+import { Button } from "react-bootstrap";
 import Nav from 'react-bootstrap/Nav';
 
 import { MENU, ORDER, ORDER_STATUS } from "../../routes";
 import Employee from "./Employee";
+import { openCustomerWs } from "../../store/actions/OrderActions";
 
 const OrderStatusPage = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { id, table } = useSelector(state => state.facility);
+    const orderId = useSelector(state => state.order?.id);
+
+    useEffect(() => {
+        dispatch(openCustomerWs(orderId))
+    },[])
 
     const showOrderPage = () => {
         navigate(ORDER, { state: { 

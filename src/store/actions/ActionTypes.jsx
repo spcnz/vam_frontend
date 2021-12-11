@@ -18,6 +18,19 @@ export const ORDER_REQUEST_FAILED = 'ORDER_REQUEST_FAILED';
 export const SET_ORDER_ID = 'SET_ORDER_ID';
 export const GET_ORDER = 'GET_ORDER';
 export const SET_ORDER = 'SET_ORDER';
+export const GET_ORDERS = 'GET_ORDERS'
+export const SET_ORDERS = 'SET_ORDERS'
+
+// ORDER STATUS
+export const UPDATE_STATUS = 'UPDATE_STATUS';
+
+//NOTIFICATION
+export const NEW_NOTIFICATION = 'NEW_NOTIFICATION';
 
 //==== FACILITY ===
 export const SET_FACILITY_INFO = 'SET_FACILITY_INFO';
+
+
+//==== SOCKET ===
+export const OPEN_WAITER_WS = 'OPEN_WAITER_WS';
+export const OPEN_CUSTOMER_WS = 'OPEN_CUSTOMER_WS';
