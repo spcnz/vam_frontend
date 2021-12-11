@@ -1,0 +1,11 @@
+.avatar {
+    width: 27%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgb(245, 245, 245);
+}
+
+.message {
+    font-size: 15px;
+    margin-left: 10px;
+}

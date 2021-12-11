@@ -10,6 +10,7 @@ import { MENU, ORDER, ORDER_STATUS } from "../../routes";
 import Employee from "./Employee";
 import { openCustomerWs } from "../../store/actions/OrderActions";
 import StatusStepper from "./StatusStepper";
+import "../../assets/css/OrderStatusPage.css";
 
 const OrderStatusPage = () => {
     const navigate = useNavigate();
@@ -33,10 +34,13 @@ const OrderStatusPage = () => {
         <div>
             <Nav.Link href={menuPath()} >Menu</Nav.Link>
             <Employee />
-            <Button onClick={showOrderPage}>
-                Pregledaj racun
-            </Button>
+            <h1 style={{marginLeft: '10%'}}>Vaša porudžbina je : </h1>
             <StatusStepper />
+            <div className="orderBtnContainer">
+                <button onClick={showOrderPage} className="orderBtn">
+                    Pregledaj račun
+                </button>
+            </div>
         </div>
     )
 

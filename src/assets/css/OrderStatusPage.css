@@ -1,0 +1,19 @@
+.orderBtn {
+    background-color: #07223e!important;
+    color: white!important;
+    text-align: right;
+    border-radius: 5px!important;
+    margin-bottom: 10px;
+    box-shadow: 0 0 7px rgb(194, 194, 194)!important;
+
+    font-size: 14px;
+}
+
+.orderBtnContainer {
+    position:absolute;
+    bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 3000px;
+}

@@ -1,12 +1,15 @@
+import "../../assets/css/Employee.css"
+
 const Employee = () => {
 
     return (
-        <div >
+        <div>
+            <div style={{float: 'left', margin: '30px'}}>
             <img 
-            style={{ width: '40%',
-            height: 'auto'}}
-            src="https://www.biography.com/.image/t_share/MTE5NTU2MzE2NjUyOTk2MTA3/9th-annual-ves-awards---red-carpet.jpg" />
-            <span> Neka porukica od konobara......... </span>
+                className="avatar"
+                src="https://www.biography.com/.image/t_share/MTE5NTU2MzE2NjUyOTk2MTA3/9th-annual-ves-awards---red-carpet.jpg" />
+            <span className="message">Konobar zadužen za Vaš sto bla bal</span>
+            </div>
         </div>
     )
 }
