@@ -1,7 +1,136 @@
-.orderConfirmation {
+.orderContainer {
+    height: 80%!important;
+}
+
+.orderRow {
+    height: 100%!important;
+    background-color: white;
+    margin-left: 10px!important;
+    margin-right: 10px!important;
+    box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.08);
+    padding: 40px 10px 10px 10px!important;
+}
+
+.buttonRow {
+    margin: 0 10px 10px 10px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.confirmOrderButton {
+    background-color: #07223e!important;
+    color: white!important;
+    text-transform: none!important;
+    font-size: 14px!important;
+    font-weight: bold!important;
+    margin: 0 auto!important;
+    display: block!important;
+    width: 300px!important;
+    height: 40px;
     text-align: center!important;
 }
 
-.orderConfirmationLink {
+.orderFacilityName {
+    /* background-color: green!important; */
+    font-size: 20px!important;
+    height: 20px!important;
+}
+
+.dateTime {
+    margin-bottom: 40px;
+}
+
+.date {
+    font-size: 16px;
+    color: gray;
+}
+
+.time {
+    font-size: 16px;
+    color: gray;
+    margin-left: 10px;
+}
+
+.orderItemContainer {
+    /* background-color: green; */
+}
+
+.orderItemRow {
+    margin-left: -15px!important;
+    margin-right: -15px!important;
+    margin-bottom: 10px!important;
+    /* background-color: blue; */
+}
+
+.removeProductContainer {
+    /* background-color: purple; */
+    padding: 0!important;
+    
+}
+
+.removeProduct {
+    font-weight: bold!important;
+    color: #985ffd!important;
+    background-color: #ededfa!important;
+    border: none!important;
+    border-radius: 50%!important;
+}
+
+.removeProduct span{
+    font-size: 13px;
+    padding: 4px;
+}
+
+.removeProduct:focus {
+    box-shadow: 0 0 0 0.2rem #d1b7ff!important;
+}
+
+.itemName {
+    /* background-color: pink; */
+    font-size: 16px;
+    color: gray;
+    margin-left: 10px;
+}
+
+.itemPrice {
+    /* background-color: pink; */
+    font-size: 16px;
+    color: gray;
+    margin-left: 20px;
+    float: right;
+}
+
+/* .itemQuantityContainer {
+    float: right!important;
+    margin-left: 25px!important;
+} */
+
+.total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 270px;
+    color: gray;
+}
+
+/* .backToMenu {
+    width: 32px!important;
+    left: 20px!important;
+    top: 10px!important;
+    font-size: 16px!important;
+    background-color: #07223e!important;
     color: white!important;
+    border: none!important;
+    border-radius: 50%!important;
+} */
+
+.backToMenu {
+    margin-top: 10px!important;
+    margin-bottom: 15px!important;
+    margin-left: 15px!important;
+
+    font-size: 14px!important;
+    background-color: #07223e!important;
+    color: white!important;
+    border: none!important;
+    text-transform: none!important;
 }

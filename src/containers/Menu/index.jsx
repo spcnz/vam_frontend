@@ -65,7 +65,7 @@ const Menu = () => {
                         >
                             <input type="text" className="form-control search" placeholder="Traži" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
                             <i className="col-2 glyphicon glyphicon-search searchIcon"/>
-                            <span onClick={() => setSearchTerm("")}>x</span>
+                            {/* <span onClick={() => setSearchTerm("")}>x</span> */}
                         </div>
                         <h1 className="objectName">{menu.objectName}</h1>
                     </Header>
