@@ -50,6 +50,7 @@ export const openWaiterWs = payload => {
 };
 
 export const updateStatus = payload => {
+  console.log(payload)
   return {
     type: UPDATE_STATUS,
     payload

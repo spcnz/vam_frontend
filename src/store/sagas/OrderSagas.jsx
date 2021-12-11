@@ -45,6 +45,7 @@ export function* openCustomerWs({ payload }) {
 
 export function* updateStatus({ payload }) {
   try {
+    console.log(payload)
     const { data } = yield call(OrderService.updateStatus, payload);
     console.log(data);
   } catch (error) {
