@@ -1,0 +1,71 @@
+.content {
+    padding: 40px 40px 40px 40px!important;
+}
+
+.statusCategory {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 10px 5px 10px;
+    margin-right: 15px;
+    color: #3390FF;
+    border-radius: 15px;
+}
+
+.receivedStatus {
+    color: #FF4633 !important;
+}
+
+.navbar {
+    width: 100%;
+    margin-bottom: 0px;
+}
+.navbarRow {
+    width: 100%;
+    padding-left: 30px;
+}
+
+.notificationContainer {
+    border-style: solid;
+    margin-bottom: 30px;
+    border-color: #212DBF;
+    border-radius: 15px;
+    border-width: thin;
+    height: 90px;
+    padding: 10px;
+}
+
+.time {
+    font-size: 24px;
+}
+
+.date {
+    font-size: 15px;
+    padding: 5px;
+}
+
+.btnWrapper {
+    display: inline-block;
+    width: 50%;
+    height: 100%
+}
+
+.statusBtn {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background-color: #ededfa;
+    width: 100%;
+    color: #212DBF;
+    height: 90px;
+    margin-left: 10px;
+    border: thin;
+}
+
+.status {
+    font-size: 17px;
+    background-color: #ededfa;
+    border-radius: 50%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+}

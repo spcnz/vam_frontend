@@ -42,10 +42,10 @@ export const orderNextState = status => {
 
 export const statusLabels = status => {
     switch(status) {
-        case RECEIVED : return "nova";
-        case IN_PROGRESS: return "obradjuje se";
-        case PREPARED: return "servirano";
-        case SERVED: return "placeno";
+        case RECEIVED : return "Nova";
+        case IN_PROGRESS: return "U pripremi";
+        case PREPARED: return "Gotovo";
+        case SERVED: return "Servirano";
         default: return "";
     }
 }

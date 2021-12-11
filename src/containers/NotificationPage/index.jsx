@@ -3,17 +3,21 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getAllOrder, openWaiterWs } from "../../store/actions/OrderActions";
 import Notification from "./Notification";
-
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Button from "react-bootstrap/Button";
-import Container from 'react-bootstrap/Container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBell, faHandHoldingUsd, faSpinner, faConciergeBell,faCheck } from '@fortawesome/free-solid-svg-icons'
+import { Container, Row, Col } from 'react-bootstrap';
 import { RECEIVED, IN_PROGRESS, PREPARED, SERVED, PAID } from "../../orderStatus";
+
+import "../../assets/css/NotificationPage.css";
+import NotificationSlider from "./NotificationSlider";
 
 const NotificationPage = () => {
     const dispatch = useDispatch();
     const orders = useSelector(state => state.order.all);
     const [data, setData] = useState([])
+    console.log(data)
 
     useEffect(() => {
         dispatch(openWaiterWs(1))
@@ -30,19 +34,35 @@ const NotificationPage = () => {
 
     return (
         <div>
+            <Container className="content">
             {data.map(order => (
-                <Notification key={order.id} order={order} />
+                <Row>
+                    <NotificationSlider key={order.id} order={order} />
+                </Row>
             ))}
+            </Container>
              <Navbar bg="light" variant="light" fixed="bottom">
-                <Container>
-                    <Nav className="me-auto">
-                        <Button onClick={() => filter(RECEIVED)}>Received</Button>
-                        <Button onClick={() => filter(IN_PROGRESS)} >In progress</Button>
-                        <Button onClick={() => filter(PREPARED)}>Prepared</Button>
-                        <Button onClick={() => filter(SERVED)}>Served</Button>
-                        <Button onClick={() => filter(PAID)}>Paid</Button>
+                <Nav className="navbar">
+                    <Container fluid >
+                        <Row className="navbarRow justify-content-md-center">
+                            <Col className="statusCategory receivedStatus" onClick={() => filter(RECEIVED)}>
+                                <FontAwesomeIcon icon={faBell} />
+                            </Col>
+                            <Col  className="statusCategory" onClick={() => filter(IN_PROGRESS)}>
+                                <FontAwesomeIcon icon={faSpinner} />
+                            </Col>
+                            <Col className="statusCategory" onClick={() => filter(PREPARED)}>
+                                <FontAwesomeIcon icon={faConciergeBell} />
+                            </Col>
+                            <Col className="statusCategory" onClick={() => filter(SERVED)}>
+                                <FontAwesomeIcon icon={faCheck} />
+                            </Col>
+                            <Col className="statusCategory" onClick={() => filter(PAID)}>
+                                <FontAwesomeIcon icon={faHandHoldingUsd} />
+                            </Col>
+                        </Row>
+                    </Container>
                 </Nav>
-                </Container>
             </Navbar>
         </div>
     )

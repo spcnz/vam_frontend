@@ -1,23 +1,31 @@
 import { useDispatch } from "react-redux";
-import { updateStatus } from "../../store/actions/OrderActions";
+
 import { formatDate, formatTime, statusLabels, orderNextState} from "../../utils";
 
-const Notification = ({ order }) => {
-    const dispatch = useDispatch();
+import "../../assets/css/NotificationPage.css";
+import { Container, Row, Col } from "react-bootstrap";
 
-    const changeStatus = () => {
-        const nextState = orderNextState(order.status);
-        dispatch(updateStatus({ id: order.id, status : nextState }));
-    }
+
+const Notification = ({ order }) => {
+
 
     return(
-        <div style={{margin: '20px', borderStyle: 'solid'}}>
-            <h1>Narudzbina  </h1>
-            <div>{formatDate(order.date)}</div>
-            <div>{formatTime(order.date)}</div>
-            <div>{order.status}</div>
-            <button onClick={changeStatus}>{statusLabels(orderNextState(order.status))}</button>
-        </div>
+            <Container className="notificationContainer">
+                <Row>
+                    <Col className="time">
+                        {formatTime(order.date)}
+                    </Col>
+                    <Col xs={3} className="status">
+                        {statusLabels(order.status)}
+                    </Col>
+                    <Col xs={2}/>
+                </Row>
+                <Row>
+                    <Col className="date">
+                        {formatDate(order.date)}
+                    </Col>         
+                </Row>
+            </Container>
     )
 }
 
