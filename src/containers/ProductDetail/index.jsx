@@ -6,6 +6,8 @@ import { DetailsContainer, Image, Modal } from "../../styles/MenuStyles";
 import { addToOrder, updateQuantity } from '../../store/actions/OrderItemActions';
 import "../../../src/assets/css/ProductDetail.css";
 import { round } from '../../utils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import QuantityButtons from '../QuantityButtons';
 
 function ProductDetail({ active, setActive, product}) {
@@ -37,7 +39,7 @@ function ProductDetail({ active, setActive, product}) {
           <div className="col productDetailHeader">
             <Image className="productDetailImage" src={product.image} />
             <Button onClick={() => setActive(false)} className="col closeDetails">
-            <i className="glyphicon glyphicon-arrow-left"></i>
+            <FontAwesomeIcon icon={faArrowLeft} />
             </Button>
           </div>
         </Row>
