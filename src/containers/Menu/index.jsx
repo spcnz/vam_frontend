@@ -57,7 +57,7 @@ const Menu = () => {
             <Container>
                 <Row>
                     <Header className="header">
-                        <Image src={menu.image} className="headerImage" />
+                        <Image src={"https://img.taste.com.au/z_S6BhQY/taste/2018/03/apr-18_salmon-with-parsley-salad-3000x2000-136320-1.jpg"} className="headerImage" />
                         <div 
                             className="col searchBar" 
                             onFocus={() => setSearchActive(true)} 

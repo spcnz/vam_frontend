@@ -1,4 +1,4 @@
-import { DISCARD_ORDER, ORDER_REQUEST_FAILED, SET_ORDER_ID, SET_ORDER, SET_ORDERS, NEW_NOTIFICATION, UPDATED_STATUS } from '../actions/ActionTypes';
+import { DISCARD_ORDER, ORDER_REQUEST_FAILED, SET_ORDER_ID, SET_ORDER, SET_ORDERS, NEW_NOTIFICATION, UPDATED_STATUS, SET_UPDATED_ORDER } from '../actions/ActionTypes';
 
 import { calcTotal } from "../../utils";
 import { RECEIVED } from "../../orderStatus";
@@ -25,7 +25,6 @@ const orderReducer = (state = initialState, action) => {
         
         return { error: null, success: true, id: action.payload };
     case SET_ORDER:
-      console.log('ja pozvana? ')
         const ordObj = transformData(action.payload);
 
         return {...state, ordered : ordObj };
@@ -41,6 +40,11 @@ const orderReducer = (state = initialState, action) => {
         const { status } = action.payload;
           
         return {...state, status };
+
+    // case SET_UPDATED_ORDER:
+    //   let ord = state.all.find(ord => ord.id == action.payload.id)
+    //   ord = {...transformOrder(action.payload)}
+    //   return {...state, all: [...state.all]}
     default:
       return state;
   }

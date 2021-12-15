@@ -39,7 +39,10 @@ const StatusStepper = () => {
     const currentStatus = useSelector(state => state.order.status);
   
     useEffect(() => {
-        setActiveStep(steps.findIndex(step => step.id == currentStatus))
+        const newStep = steps.findIndex(step => step.id == currentStatus);
+        if (newStep != -1) {
+          setActiveStep(newStep)
+        }
     },[currentStatus])
   
   

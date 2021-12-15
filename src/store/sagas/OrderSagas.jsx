@@ -3,7 +3,7 @@ import { call, put } from 'redux-saga/effects';
 import OrderService from '../../services/OrderService';
 import WaiterSocketService from '../../services/WaiterSocketService';
 import CustomerSocketService from '../../services/CustomerSocketService';
-import { discardOrder, orderRequestFailed, setOrder, setOrderId, setOrders } from '../actions/OrderActions';
+import { discardOrder, orderRequestFailed, setOrder, setOrderId, setOrders, setUpdatedOrder } from '../actions/OrderActions';
 
 import store from "../../store";
 
@@ -47,8 +47,8 @@ export function* openCustomerWs({ payload }) {
 export function* updateStatus({ payload }) {
   try {
     console.log(payload)
-    const { data } = yield call(OrderService.updateStatus, payload);
-    console.log(data);
+    const data = yield call(OrderService.updateStatus, payload);
+    yield put(setUpdatedOrder(data));
   } catch (error) {
     //nesto heh
   }

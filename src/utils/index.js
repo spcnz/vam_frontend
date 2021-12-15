@@ -36,6 +36,7 @@ export const orderNextState = status => {
         case IN_PROGRESS: return PREPARED;
         case PREPARED: return SERVED;
         case SERVED: return PAID;
+        case PAID : return "none";
         default: return "";
     }
 }
@@ -46,6 +47,8 @@ export const statusLabels = status => {
         case IN_PROGRESS: return "U pripremi";
         case PREPARED: return "Gotovo";
         case SERVED: return "Servirano";
+        case PAID: return "Plaćeno";
+        case "none": return "aa";
         default: return "";
     }
 }

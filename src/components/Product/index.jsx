@@ -19,7 +19,7 @@ const Product = ( { product }) => {
                         <div className="price">{round(product.price)}€</div>
                     </div>
                     <div className="col-4 productImageContainer">
-                        <img src={product.item_images} alt="Food" className="productImage"/>
+                        <img src={"https://img.taste.com.au/z_S6BhQY/taste/2018/03/apr-18_salmon-with-parsley-salad-3000x2000-136320-1.jpg"} alt="Food" className="productImage"/>
                         {/* <QuantityButtons 
                             id={product.id} 
                             product={product}

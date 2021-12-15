@@ -48,10 +48,12 @@ const OrderStatusPage = () => {
     const dispatch = useDispatch();
     const { id, table } = useSelector(state => state.facility);
     const orderId = useSelector(state => state.order?.id);
+    console.log(orderId);
 
     useEffect(() => {
-        dispatch(openCustomerWs(orderId))
-    },[])
+        if (orderId)
+            dispatch(openCustomerWs(orderId))
+    },[orderId])
 
     const showOrderPage = () => {
         navigate(ORDER, { state: { 
@@ -68,10 +70,6 @@ const OrderStatusPage = () => {
             <h1 style={{marginLeft: '10%'}}>Vaša porudžbina je : </h1>
             <StatusStepper />
             <Btn showOrderPage={showOrderPage}/>
-
-
-
-
         </div>
     )
 

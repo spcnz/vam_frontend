@@ -11,13 +11,13 @@ class CustomerSocketService  {
     connect = (orderId, store) => {
         this.dispatch = store?.dispatch;
 
-        const arr = ["IN PROGRESS", "PREPARED", "PAID"];
-        for (let i=0; i < 3; i++) {
-            const ind = i;
-            setTimeout(disp => {
-                disp(updatedStatus({ id: 138, status: arr[ind]}))
-            }, 2*i * 4000, store?.dispatch)
-        }
+        // const arr = ["IN PROGRESS", "PREPARED", "PAID"];
+        // for (let i=0; i < 3; i++) {
+        //     const ind = i;
+        //     setTimeout(disp => {
+        //         disp(updatedStatus({ id: 138, status: arr[ind]}))
+        //     }, 2*i * 4000, store?.dispatch)
+        // }
 
         
         this.socket = new WebSocket(this.options.baseURL + `${orderId}/`);
@@ -33,7 +33,7 @@ class CustomerSocketService  {
         };
         this.socket.onmessage = ({ data }) => {
             console.log("received something !", data)
-            this.dispatch(updatedStatus(data));
+            this.dispatch(updatedStatus(JSON.parse(data)));
         };
         
     }

@@ -3,7 +3,7 @@ import ApiService from './ApiService';
 const ENDPOINTS = {
   POST: 'order/',
   GET: 'order/:id/',
-  PUT: 'order/',
+  PUT: 'order/:id/',
   ALL: 'order/'
 };
 
@@ -22,7 +22,7 @@ class OrderService extends ApiService {
     };
 
     updateStatus = async ({ id, status }) => {
-      const { data } = await this.apiClient.put(ENDPOINTS.PUT, { id, status });
+      const { data } = await this.apiClient.put(ENDPOINTS.PUT.replace(":id", id), { status });
       
       return data;
     }

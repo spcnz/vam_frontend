@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { updateStatus } from "../../store/actions/OrderActions";
+import { getAllOrder, updateStatus } from "../../store/actions/OrderActions";
 import Slider from "react-slick";
 import Notification from "./Notification";
 import "../../assets/css/NotificationPage.css";
@@ -10,7 +10,9 @@ const  NotificationSlider = ({ order }) => {
 
   const changeStatus = () => {
       const nextState = orderNextState(order.status);
-      dispatch(updateStatus({ id: order.id, status : nextState }));
+      dispatch(updateStatus({ id: order.id, status : nextState}));
+      dispatch(getAllOrder());
+
   }
 
   const settings = {

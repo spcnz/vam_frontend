@@ -37,7 +37,7 @@ function ProductDetail({ active, setActive, product}) {
       <DetailsContainer>
         <Row>
           <div className="col productDetailHeader">
-            <Image className="productDetailImage" src={product.image} />
+            <Image className="productDetailImage" src={"https://img.taste.com.au/z_S6BhQY/taste/2018/03/apr-18_salmon-with-parsley-salad-3000x2000-136320-1.jpg"} />
             <Button onClick={() => setActive(false)} className="col closeDetails">
             <FontAwesomeIcon icon={faArrowLeft} />
             </Button>

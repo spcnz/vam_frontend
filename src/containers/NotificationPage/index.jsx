@@ -17,7 +17,8 @@ const NotificationPage = () => {
     const dispatch = useDispatch();
     const orders = useSelector(state => state.order.all);
     const [data, setData] = useState([])
-    console.log(data)
+    console.log('Data u page je ', data)
+    console.log("orders u page je ", orders);
 
     useEffect(() => {
         dispatch(openWaiterWs(1))
@@ -27,6 +28,7 @@ const NotificationPage = () => {
     useEffect(() => {
         setData(orders)
     },[orders])
+
 
     const filter = status => {
         setData(orders.filter(order => order.status == status));
@@ -45,7 +47,7 @@ const NotificationPage = () => {
                 <Nav className="navbar">
                     <Container fluid >
                         <Row className="navbarRow justify-content-md-center">
-                            <Col className="statusCategory receivedStatus" onClick={() => filter(RECEIVED)}>
+                            <Col className="statusCategory receivedStatus" onClick={() => setData(orders)}>
                                 <FontAwesomeIcon icon={faBell} />
                             </Col>
                             <Col  className="statusCategory" onClick={() => filter(IN_PROGRESS)}>
