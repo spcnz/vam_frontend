@@ -1,6 +1,7 @@
 About
 ====
 Front end part of MVP for VAM service. Includes food and beverage ordering service and order status tracking.
+Novi Sad, 2021.
 
 
 Prerequirements
